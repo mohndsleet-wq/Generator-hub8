@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEGA Fuel Systems | Product Library</title>
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --panel:#11151a;
+      --panel2:#171c22;
+      --text:#f5f7f9;
+      --muted:#9ca6b2;
+      --line:#252c34;
+      --red:#ed1c24;
+      --white:#fff;
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 80% 15%,
+          rgba(237,28,36,.10),
+          transparent 22%
+        ),
+        linear-gradient(
+          180deg,
+          #080a0c,
+          #0d1014 55%,
+          #090b0e
+        );
+
+      color:var(--text);
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    /* =========================
+       TOP NAVIGATION
+    ========================== */
+
+    .topbar{
+      height:76px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:24px;
+
+      padding:0 4vw;
+
+      border-bottom:1px solid rgba(255,255,255,.07);
+
+      background:rgba(8,10,12,.88);
+
+      backdrop-filter:blur(18px);
+
+      position:sticky;
+
+      top:0;
+
+      z-index:100;
+    }
+
+    /* LOGO */
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+
+      min-width:240px;
+    }
+
+    .mark{
+      width:42px;
+      height:42px;
+
+      position:relative;
+    }
+
+    .mark:before,
+    .mark:after{
+      content:"";
+
+      position:absolute;
+
+      top:6px;
+
+      width:18px;
+      height:30px;
+
+      background:var(--red);
+
+      clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 100%
+      );
+    }
+
+    .mark:before{
+      left:2px;
+      transform:skewX(-8deg);
+    }
+
+    .mark:after{
+      right:2px;
+      transform:skewX(8deg);
+    }
+
+    .brand-text strong{
+      display:block;
+
+      font-size:25px;
+
+      letter-spacing:3px;
+
+      line-height:1;
+    }
+
+    .brand-text span{
+      display:block;
+
+      margin-top:4px;
+
+      color:var(--muted);
+
+      font-size:10px;
+
+      letter-spacing:3px;
+    }
+
+    /* NAV LINKS */
+
+    .nav{
+      display:flex;
+
+      gap:30px;
+
+      align-items:center;
+
+      color:#d5dae0;
+
+      font-size:14px;
+    }
+
+    .nav a{
+      transition:.2s;
+    }
+
+    .nav a:hover{
+      color:#fff;
+    }
+
+    /* SEARCH */
+
+    .header-actions{
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+    }
+
+    .search{
+      width:min(330px,28vw);
+
+      height:42px;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      padding:0 15px;
+
+      border:1px solid #343b44;
+
+      border-radius:11px;
+
+      background:#11161b;
+    }
+
+    .search input{
+      width:100%;
+
+      border:0;
+
+      outline:0;
+
+      background:transparent;
+
+      color:#fff;
+    }
+
+    .search input::placeholder{
+      color:#73808d;
+    }
+
+    /* BUTTONS */
+
+    .btn{
+      border:0;
+
+      cursor:pointer;
+
+      border-radius:10px;
+
+      padding:13px 18px;
+
+      font-weight:700;
+
+      transition:.2s ease;
+    }
+
+    .btn-red{
+      background:var(--red);
+
+      color:#fff;
+
+      box-shadow:
+        0 8px 24px rgba(237,28,36,.18);
+    }
+
+    .btn-red:hover{
+      transform:translateY(-2px);
+
+      filter:brightness(1.08);
+    }
+
+    .btn-outline{
+      border:1px solid #4b545f;
+
+      color:#fff;
+
+      background:transparent;
+    }
+
+    .btn-outline:hover{
+      border-color:#fff;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero{
+      min-height:690px;
+
+      padding:62px 4vw 50px;
+
+      display:grid;
+
+      grid-template-columns:
+        minmax(300px,.85fr)
+        minmax(720px,1.8fr);
+
+      gap:52px;
+
+      align-items:center;
+
+      max-width:1700px;
+
+      margin:auto;
+    }
+
+    .eyebrow{
+      font-size:12px;
+
+      letter-spacing:5px;
+
+      color:#c4cad1;
+
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:clamp(
+        54px,
+        6vw,
+        96px
+      );
+
+      margin:0;
+
+      line-height:.9;
+
+      letter-spacing:-3px;
+
+      font-weight:900;
+
+      text-transform:uppercase;
+    }
+
+    h1 .red{
+      color:var(--red);
+    }
+
+    .hero-copy{
+      margin:28px 0 0;
+
+      max-width:590px;
+
+      color:#b5bec8;
+
+      font-size:17px;
+
+      line-height:1.7;
+    }
+
+    .hero-actions{
+      margin-top:32px;
+
+      display:flex;
+
+      gap:14px;
+
+      flex-wrap:wrap;
+    }
+
+    /* SMALL INFO */
+
+    .trust-row{
+      margin-top:48px;
+
+      display:grid;
+
+      grid-template-columns:repeat(3,1fr);
+
+      gap:12px;
+    }
+
+    .trust{
+      border-top:1px solid #343b44;
+
+      padding-top:16px;
+    }
+
+    .trust strong{
+      display:block;
+
+      font-size:13px;
+
+      letter-spacing:.6px;
+    }
+
+    .trust span{
+      display:block;
+
+      margin-top:5px;
+
+      color:#788390;
+
+      font-size:12px;
+    }
+
+    /* =========================
+       SHOWROOM
+    ========================== */
+
+    .showroom{
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.025),
+          rgba(255,255,255,0)
+        ),
+        #0d1115;
+
+      border:1px solid #252b33;
+
+      border-radius:24px;
+
+      overflow:hidden;
+
+      box-shadow:var(--shadow);
+    }
+
+    .showroom-head{
+      min-height:116px;
+
+      padding:26px 30px;
+
+      display:flex;
+
+      align-items:flex-start;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      border-bottom:1px solid #272e36;
+
+      background:
+        linear-gradient(
+          115deg,
+          #12171c 0,
+          #11161b 55%,
+          rgba(237,28,36,.12) 100%
+        );
+    }
+
+    .showroom-head h2{
+      margin:0;
+
+      font-size:29px;
+
+      letter-spacing:2px;
+    }
+
+    .showroom-head p{
+      margin:7px 0 0;
+
+      color:#8e99a6;
+
+      font-size:13px;
+    }
+
+    .showroom-tag{
+      color:#fff;
+
+      font-size:12px;
+
+      line-height:1.5;
+
+      text-align:right;
+
+      letter-spacing:2px;
+    }
+
+    .showroom-tag span{
+      color:var(--red);
+    }
+
+    /* =========================
+       CATEGORY GRID
+    ========================== */
+
+    .category-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(6,1fr);
+
+      min-height:500px;
+    }
+
+    .category{
+      position:relative;
+
+      display:flex;
+
+      flex-direction:column;
+
+      min-width:0;
+
+      border-right:1px solid #242b32;
+
+      background:
+        linear-gradient(
+          180deg,
+          #171b20,
+          #0d1115
+        );
+
+      transition:.25s ease;
+
+      cursor:pointer;
+
+      overflow:hidden;
+    }
+
+    .category:last-child{
+      border-right:0;
+    }
+
+    .category:hover{
+      background:
+        linear-gradient(
+          180deg,
+          #20252b,
+          #11161a
+        );
+
+      transform:translateY(-5px);
+
+      z-index:3;
+
+      box-shadow:
+        0 24px 40px rgba(0,0,0,.4);
+    }
+
+    .cat-title{
+      padding:
+        20px
+        17px
+        11px;
+
+      font-size:16px;
+
+      font-weight:900;
+
+      letter-spacing:.3px;
+
+      text-transform:uppercase;
+    }
+
+    .cat-title:after{
+      content:"";
+
+      display:block;
+
+      width:35px;
+
+      height:4px;
+
+      margin-top:8px;
+
+      background:var(--red);
+    }
+
+    /* =========================
+       PRODUCT VISUAL AREA
+    ========================== */
+
+    .product-visual{
+      height:190px;
+
+      margin:
+        0
+        13px
+        16px;
+
+      border-radius:10px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          #f8f8f8 0,
+          #e7e7e7 45%,
+          #c8c8c8 100%
+        );
+    }
+
+    .product-visual svg{
+      width:88%;
+
+      height:88%;
+
+      filter:
+        drop-shadow(
+          0 18px 12px rgba(0,0,0,.24)
+        );
+    }
+
+    /* CATEGORY TEXT */
+
+    .cat-list{
+      list-style:none;
+
+      padding:
+        0
+        18px
+        18px;
+
+      margin:0;
+
+      color:#c5cbd1;
+
+      font-size:12px;
+
+      line-height:1.55;
+    }
+
+    .cat-list li{
+      position:relative;
+
+      padding-left:10px;
+    }
+
+    .cat-list li:before{
+      content:"";
+
+      width:4px;
+
+      height:4px;
+
+      border-radius:50%;
+
+      background:var(--red);
+
+      position:absolute;
+
+      left:0;
+
+      top:.55em;
+    }
+
+    /* CATEGORY BUTTON */
+
+    .catalog-box{
+      margin:
+        auto
+        13px
+        14px;
+
+      padding:14px;
+
+      border:1px solid #303841;
+
+      border-radius:10px;
+
+      background:#151b20;
+
+      transition:.2s;
+    }
+
+    .category:hover .catalog-box{
+      border-color:var(--red);
+    }
+
+    .catalog-box small{
+      display:block;
+
+      color:#75808d;
+
+      font-size:10px;
+
+      letter-spacing:1px;
+    }
+
+    .catalog-box strong{
+      display:block;
+
+      margin-top:4px;
+
+      font-size:13px;
+    }
+
+    /* =========================
+       BENEFITS
+    ========================== */
+
+    .benefits{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      max-width:1700px;
+
+      margin:auto;
+
+      border-top:
+        1px solid #262d34;
+
+      border-bottom:
+        1px solid #262d34;
+    }
+
+    .benefit{
+      min-height:112px;
+
+      padding:
+        27px
+        4vw;
+
+      border-right:
+        1px solid #262d34;
+    }
+
+    .benefit:last-child{
+      border-right:0;
+    }
+
+    .benefit b{
+      font-size:13px;
+
+      letter-spacing:.5px;
+    }
+
+    .benefit p{
+      margin:
+        6px
+        0
+        0;
+
+      color:#818c98;
+
+      font-size:12px;
+    }
+
+    /* =========================
+       APPLICATIONS
+    ========================== */
+
+    .section{
+      max-width:1700px;
+
+      margin:auto;
+
+      padding:
+        72px
+        4vw
+        90px;
+    }
+
+    .section-title{
+      display:flex;
+
+      align-items:end;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      margin-bottom:28px;
+    }
+
+    .section-title small{
+      color:#8d98a5;
+
+      letter-spacing:4px;
+
+      text-transform:uppercase;
+    }
+
+    .section-title h2{
+      margin:
+        7px
+        0
+        0;
+
+      font-size:42px;
+
+      text-transform:uppercase;
+    }
+
+    .section-title h2 span{
+      color:var(--red);
+    }
+
+    .industry-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(6,1fr);
+
+      gap:14px;
+    }
+
+    .industry{
+      min-height:235px;
+
+      padding:22px;
+
+      position:relative;
+
+      overflow:hidden;
+
+      border:
+        1px solid #262d34;
+
+      border-radius:14px;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 35%,
+          rgba(0,0,0,.9)
+        ),
+        linear-gradient(
+          130deg,
+          #252b30,
+          #0f1215
+        );
+
+      display:flex;
+
+      align-items:flex-end;
+    }
+
+    .industry:before{
+      content:"";
+
+      position:absolute;
+
+      width:140px;
+
+      height:140px;
+
+      right:-40px;
+
+      top:-40px;
+
+      border-radius:50%;
+
+      border:
+        28px solid
+        rgba(237,28,36,.08);
+    }
+
+    .industry strong{
+      font-size:16px;
+
+      position:relative;
+
+      z-index:2;
+    }
+
+    .industry span{
+      display:block;
+
+      color:#949eaa;
+
+      font-size:12px;
+
+      margin-top:5px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      padding:
+        30px
+        4vw;
+
+      border-top:
+        1px solid #252c34;
+
+      color:#6f7984;
+
+      font-size:12px;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:1250px){
+
+      .nav{
+        display:none;
+      }
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .category-grid{
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+      .category{
+        border-bottom:
+          1px solid #242b32;
+      }
+
+      .industry-grid{
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+    }
+
+    @media(max-width:760px){
+
+      .topbar{
+        padding:0 18px;
+      }
+
+      .brand{
+        min-width:auto;
+      }
+
+      .brand-text span{
+        display:none;
+      }
+
+      .search{
+        display:none;
+      }
+
+      .header-actions .btn{
+        display:none;
+      }
+
+      .hero{
+        padding:
+          40px
+          18px;
+      }
+
+      h1{
+        font-size:52px;
+      }
+
+      .trust-row{
+        grid-template-columns:1fr;
+      }
+
+      .category-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .product-visual{
+        height:155px;
+      }
+
+      .benefits{
+        grid-template-columns:
+          1fr
+          1fr;
+      }
+
+      .benefit{
+        border-bottom:
+          1px solid #262d34;
+      }
+
+      .industry-grid{
+        grid-template-columns:
+          1fr
+          1fr;
+      }
+
+      .section{
+        padding:
+          55px
+          18px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+
+    }
+
+    @media(max-width:500px){
+
+      .category-grid,
+      .industry-grid,
+      .benefits{
+        grid-template-columns:1fr;
+      }
+
+      .showroom-head{
+        flex-direction:column;
+      }
+
+      .showroom-tag{
+        text-align:left;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================== -->
+
+<header class="topbar">
+
+  <a class="brand" href="#">
+
+    <div class="mark"></div>
+
+    <div class="brand-text">
+
+      <strong>VEGA</strong>
+
+      <span>
+        FUEL SYSTEMS
+      </span>
+
+    </div>
+
+  </a>
+
+
+  <nav class="nav">
+
+    <a href="#products">
+      Products
+    </a>
+
+    <a href="#products">
+      Categories
+    </a>
+
+    <a href="#industries">
+      Applications
+    </a>
+
+    <a href="#">
+      Datasheets
+    </a>
+
+    <a href="#">
+      Price List
+    </a>
+
+  </nav>
+
+
+  <div class="header-actions">
+
+    <label class="search">
+
+      <span>⌕</span>
+
+      <input
+        id="globalSearch"
+        type="search"
+        placeholder="Search product, brand, model..."
+      />
+
+    </label>
+
+
+    <button
+      class="btn btn-red"
+      onclick="goCatalog()"
+    >
+      Browse Catalog →
+    </button>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================== -->
+
+<main>
+
+
+<!-- =========================
+     HERO SECTION
+========================== -->
+
+<section class="hero">
+
+
+  <!-- LEFT SIDE -->
+
+  <div>
+
+    <div class="eyebrow">
+      VEGA ENGINEERING SOLUTIONS · FUEL SYSTEMS
+    </div>
+
+
+    <h1>
+
+      ENGINEERED
+
+      <br>
+
+      FOR
+
+      <span class="red">
+        RELIABILITY.
+      </span>
+
+    </h1>
+
+
+    <p class="hero-copy">
+
+      Internal product library for fuel storage,
+      transfer, filtration, monitoring, controls
+      and accessories — organized for fast
+      technical selection and easy access to
+      product data.
+
+    </p>
+
+
+    <div class="hero-actions">
+
+      <button
+        class="btn btn-red"
+        onclick="goCatalog()"
+      >
+        Explore Products →
+      </button>
+
+
+      <a
+        class="btn btn-outline"
+        href="#products"
+      >
+        Browse Categories
+      </a>
+
+    </div>
+
+
+
+    <div class="trust-row">
+
+
+      <div class="trust">
+
+        <strong>
+          TECHNICAL DATA
+        </strong>
+
+        <span>
+          Specifications in one place
+        </span>
+
+      </div>
+
+
+      <div class="trust">
+
+        <strong>
+          DATASHEETS
+        </strong>
+
+        <span>
+          Direct document access
+        </span>
+
+      </div>
+
+
+      <div class="trust">
+
+        <strong>
+          PRICING
+        </strong>
+
+        <span>
+          Supplier & selling prices
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       SHOWROOM
+  ========================== -->
+
+  <div
+    class="showroom"
+    id="products"
+  >
+
+
+    <div class="showroom-head">
+
+      <div>
+
+        <h2>
+          FUEL SYSTEMS
+        </h2>
+
+        <p>
+          Product Library · Select a category to continue
+        </p>
+
+      </div>
+
+
+      <div class="showroom-tag">
+
+        ENGINEERED FOR
+
+        <br>
+
+        <span>
+          CONTINUITY
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="category-grid">
+
+
+      <!-- =========================
+           TANKS
+      ========================== -->
+
+      <article
+        class="category"
+        data-search="fuel tanks storage bulk day tank"
+        onclick="openCategory('tanks')"
+      >
+
+
+        <div class="cat-title">
+          Fuel Tanks
+        </div>
+
+
+        <div class="product-visual">
+
+
+          <svg
+            viewBox="0 0 220 160"
+            aria-hidden="true"
+          >
+
+
+            <defs>
+
+              <linearGradient
+                id="tank"
+                x1="0"
+                x2="1"
+              >
+
+                <stop stop-color="#8e969d"/>
+
+                <stop
+                  offset=".45"
+                  stop-color="#e8ecef"
+                />
+
+                <stop
+                  offset="1"
+                  stop-color="#777f86"
+                />
+
+              </linearGradient>
+
+            </defs>
+
+
+            <rect
+              x="42"
+              y="48"
+              rx="30"
+              width="132"
+              height="67"
+              fill="url(#tank)"
+              stroke="#555"
+              stroke-width="2"
+            />
+
+
+            <ellipse
+              cx="43"
+              cy="81"
+              rx="21"
+              ry="33"
+              fill="#bfc6cb"
+              stroke="#555"
+              stroke-width="2"
+            />
+
+
+            <ellipse
+              cx="173"
+              cy="81"
+              rx="21"
+              ry="33"
+              fill="#9fa7ad"
+              stroke="#555"
+              stroke-width="2"
+            />
+
+
+            <rect
+              x="75"
+              y="37"
+              width="35"
+              height="12"
+              rx="3"
+              fill="#6b7379"
+            />
+
+
+            <rect
+              x="51"
+              y="113"
+              width="20"
+              height="13"
+              fill="#4c5358"
+            />
+
+
+            <rect
+              x="145"
+              y="113"
+              width="20"
+              height="13"
+              fill="#4c5358"
+            />
+
+
+            <rect
+              x="35"
+              y="128"
+              width="146"
+              height="7"
+              rx="3"
+              fill="#41484d"
+            />
+
+          </svg>
+
+
+        </div>
+
+
+        <ul class="cat-list">
+
+          <li>
+            Bulk storage tanks
+          </li>
+
+          <li>
+            Day tanks
+          </li>
+
+          <li>
+            Single / double wall
+          </li>
+
+          <li>
+            Custom fabricated
+          </li>
+
+        </ul>
+
+
+        <div class="catalog-box">
+
+          <small>
+            CATEGORY
+          </small>
+
+          <strong>
+            Storage Systems →
+          </strong>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- =========================
+           PUMPS
+      ========================== -->
+
+      <article
+        class="category"
+        data-search="pump pumps transfer fuel diesel"
+        onclick="openCategory('pumps')"
+      >
+
+
+        <div class="cat-title">
+          Pumps
+        </div>
+
+
+        <div class="product-visual">
+
+
+          <svg
+            viewBox="0 0 220 160"
+            aria-hidden="true"
+          >
+
+
+            <defs>
+
+              <linearGradient
+                id="pump"
+                x1="0"
+                x2="1"
+              >
+
+                <stop stop-color="#111"/>
+
+                <stop
+                  offset=".5"
+                  stop-color="#444"
+                />
+
+                <stop
+                  offset="1"
+                  stop-color="#141414"
+                />
+
+              </linearGradient>
+
+            </defs>
+
+
+            <rect
+              x="85"
+              y="52"
+              width="82"
+              height="55"
+              rx="11"
+              fill="url(#pump)"
+            />
+
+
+            <circle
+              cx="76"
+              cy="80"
+              r="35"
+              fill="#272b2e"
+              stroke="#050505"
+              stroke-width="7"
+            />
+
+
+            <circle
+              cx="76"
+              cy="80"
+              r="14"
+              fill="#111"
+            />
+
+
+            <rect
+              x="160"
+              y="62"
+              width="25"
+              height="38"
+              rx="4"
+              fill="#ed1c24"
+            />
+
+
+            <rect
+              x="44"
+              y="111"
+              width="144"
+              height="8"
+              rx="3"
+              fill="#4c5358"
+            />
+
+
+          </svg>
+
+
+        </div>
+
+
+        <ul class="cat-list">
+
+          <li>
+            Transfer pumps
+          </li>
+
+          <li>
+            Duty / standby sets
+          </li>
+
+          <li>
+            Filling pumps
+          </li>
+
+          <li>
+            Pump skids
+          </li>
+
+        </ul>
+
+
+        <div class="catalog-box">
+
+          <small>
+            CATEGORY
+          </small>
+
+          <strong>
+            Fuel Transfer →
+          </strong>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- =========================
+           FILTERS
+      ========================== -->
+
+      <article
+        class="category"
+        data-search="filter filters filtration polishing separator"
+        onclick="openCategory('filtration')"
+      >
+
+
+        <div class="cat-title">
+          Filters
+        </div>
+
+
+        <div class="product-visual">
+
+
+          <svg
+            viewBox="0 0 220 160"
+            aria-hidden="true"
+          >
+
+
+            <defs>
+
+              <linearGradient
+                id="filter"
+                x1="0"
+                x2="1"
+              >
+
+                <stop stop-color="#1e2327"/>
+
+                <stop
+                  offset=".45"
+                  stop-color="#f3f3f3"
+                />
+
+                <stop
+                  offset="1"
+                  stop-color="#777"
+                />
+
+              </linearGradient>
+
+            </defs>
+
+
+            <rect
+              x="48"
+              y="40"
+              width="52"
+              height="85"
+              rx="14"
+              fill="url(#filter)"
+              stroke="#333"
+              stroke-width="3"
+            />
+
+
+            <rect
+              x="119"
+              y="30"
+              width="52"
+              height="95"
+              rx="14"
+              fill="url(#filter)"
+              stroke="#333"
+              stroke-width="3"
+            />
+
+
+            <rect
+              x="40"
+              y="31"
+              width="68"
+              height="17"
+              rx="5"
+              fill="#25292c"
+            />
+
+
+            <rect
+              x="111"
+              y="22"
+              width="68"
+              height="17"
+              rx="5"
+              fill="#25292c"
+            />
+
+
+            <rect
+              x="59"
+              y="126"
+              width="29"
+              height="11"
+              rx="3"
+              fill="#2e3438"
+            />
+
+
+            <rect
+              x="130"
+              y="126"
+              width="29"
+              height="11"
+              rx="3"
+              fill="#2e3438"
+            />
+
+
+          </svg>
+
+
+        </div>
+
+
+        <ul class="cat-list">
+
+          <li>
+            Fuel filtration
+          </li>
+
+          <li>
+            Water separation
+          </li>
+
+          <li>
+            Fuel polishing
+          </li>
+
+          <li>
+            Replacement elements
+          </li>
+
+        </ul>
+
+
+        <div class="catalog-box">
+
+          <small>
+            CATEGORY
+          </small>
+
+          <strong>
+            Fuel Quality →
+          </strong>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- =========================
+           VALVES
+      ========================== -->
+
+      <article
+        class="category"
+        data-search="valve valves ball check solenoid accessories"
+        onclick="openCategory('valves')"
+      >
+
+
+        <div class="cat-title">
+          Valves
+        </div>
+
+
+        <div class="product-visual">
+
+
+          <svg
+            viewBox="0 0 220 160"
+            aria-hidden="true"
+          >
+
+
+            <defs>
+
+              <linearGradient
+                id="valve"
+                x1="0"
+                x2="1"
+              >
+
+                <stop stop-color="#8a5d1c"/>
+
+                <stop
+                  offset=".5"
+                  stop-color="#d8a44d"
+                />
+
+                <stop
+                  offset="1"
+                  stop-color="#775016"
+                />
+
+              </linearGradient>
+
+            </defs>
+
+
+            <rect
+              x="60"
+              y="65"
+              width="100"
+              height="42"
+              rx="13"
+              fill="url(#valve)"
+              stroke="#5a3b10"
+              stroke-width="3"
+            />
+
+
+            <rect
+              x="95"
+              y="44"
+              width="30"
+              height="25"
+              rx="5"
+              fill="#b88434"
+            />
+
+
+            <rect
+              x="104"
+              y="27"
+              width="12"
+              height="22"
+              fill="#34383b"
+            />
+
+
+            <rect
+              x="107"
+              y="13"
+              width="76"
+              height="10"
+              rx="5"
+              fill="#ed1c24"
+            />
+
+
+            <circle
+              cx="63"
+              cy="86"
+              r="25"
+              fill="none"
+              stroke="#8c651f"
+              stroke-width="10"
+            />
+
+
+            <circle
+              cx="158"
+              cy="86"
+              r="25"
+              fill="none"
+              stroke="#8c651f"
+              stroke-width="10"
+            />
+
+
+          </svg>
+
+
+        </div>
+
+
+        <ul class="cat-list">
+
+          <li>
+            Ball & check valves
+          </li>
+
+          <li>
+            Solenoid valves
+          </li>
+
+          <li>
+            Overfill protection
+          </li>
+
+          <li>
+            Flame arrestors
+          </li>
+
+        </ul>
+
+
+        <div class="catalog-box">
+
+          <small>
+            CATEGORY
+          </small>
+
+          <strong>
+            Valves & Accessories →
+          </strong>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- =========================
+           MONITORING
+      ========================== -->
+
+      <article
+        class="category"
+        data-search="monitoring sensors level gauge atg meter"
+        onclick="openCategory('monitoring')"
+      >
+
+
+        <div class="cat-title">
+          Monitoring
+        </div>
+
+
+        <div class="product-visual">
+
+
+          <svg
+            viewBox="0 0 220 160"
+            aria-hidden="true"
+          >
+
+
+            <rect
+              x="58"
+              y="36"
+              width="104"
+              height="88"
+              rx="13"
+              fill="#23272b"
+              stroke="#111"
+              stroke-width="6"
+            />
+
+
+            <rect
+              x="75"
+              y="52"
+              width="70"
+              height="43"
+              rx="5"
+              fill="#07180f"
+            />
+
+
+            <text
+              x="110"
+              y="80"
+              text-anchor="middle"
+              fill="#f3f5f6"
+              font-size="24"
+              font-family="Arial"
+              font-weight="700"
+            >
+              78%
+            </text>
+
+
+            <rect
+              x="75"
+              y="103"
+              width="23"
+              height="7"
+              rx="3"
+              fill="#ed1c24"
+            />
+
+
+            <rect
+              x="105"
+              y="103"
+              width="23"
+              height="7"
+              rx="3"
+              fill="#5a636b"
+            />
+
+
+            <circle
+              cx="145"
+              cy="107"
+              r="5"
+              fill="#51c878"
+            />
+
+
+          </svg>
+
+
+        </div>
+
+
+        <ul class="cat-list">
+
+          <li>
+            Level indicators
+          </li>
+
+          <li>
+            ATG systems
+          </li>
+
+          <li>
+            Leak detection
+          </li>
+
+          <li>
+            Flow meters
+          </li>
+
+        </ul>
+
+
+        <div class="catalog-box">
+
+          <small>
+            CATEGORY
+          </small>
+
+          <strong>
+            Monitoring Systems →
+          </strong>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- =========================
+           CONTROL PANELS
+      ========================== -->
+
+      <article
+        class="category"
+        data-search="control controls panel panels plc hmi"
+        onclick="openCategory('controls')"
+      >
+
+
+        <div class="cat-title">
+          Control Panels
+        </div>
+
+
+        <div class="product-visual">
+
+
+          <svg
+            viewBox="0 0 220 160"
+            aria-hidden="true"
+          >
+
+
+            <rect
+              x="55"
+              y="27"
+              width="110"
+              height="111"
+              rx="8"
+              fill="#5d646a"
+              stroke="#333"
+              stroke-width="3"
+            />
+
+
+            <rect
+              x="69"
+              y="43"
+              width="82"
+              height="38"
+              rx="5"
+              fill="#1b1f23"
+            />
+
+
+            <rect
+              x="83"
+              y="50"
+              width="54"
+              height="24"
+              rx="3"
+              fill="#152419"
+            />
+
+
+            <circle
+              cx="80"
+              cy="101"
+              r="7"
+              fill="#45bd6b"
+            />
+
+
+            <circle
+              cx="108"
+              cy="101"
+              r="7"
+              fill="#f2c037"
+            />
+
+
+            <circle
+              cx="136"
+              cy="101"
+              r="7"
+              fill="#ed1c24"
+            />
+
+
+            <rect
+              x="71"
+              y="118"
+              width="78"
+              height="8"
+              rx="3"
+              fill="#30353a"
+            />
+
+
+          </svg>
+
+
+        </div>
+
+
+        <ul class="cat-list">
+
+          <li>
+            Fuel transfer controls
+          </li>
+
+          <li>
+            Pump sequencing
+          </li>
+
+          <li>
+            Level management
+          </li>
+
+          <li>
+            BMS interface
+          </li>
+
+        </ul>
+
+
+        <div class="catalog-box">
+
+          <small>
+            CATEGORY
+          </small>
+
+          <strong>
+            Control Systems →
+          </strong>
+
+        </div>
+
+
+      </article>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     FEATURES
+========================== -->
+
+<section class="benefits">
+
+
+  <div class="benefit">
+
+    <b>
+      PRODUCT DATABASE
+    </b>
+
+    <p>
+      Organized internal reference
+    </p>
+
+  </div>
+
+
+  <div class="benefit">
+
+    <b>
+      TECHNICAL DOCUMENTS
+    </b>
+
+    <p>
+      Datasheets & specifications
+    </p>
+
+  </div>
+
+
+  <div class="benefit">
+
+    <b>
+      SUPPLIER PRICING
+    </b>
+
+    <p>
+      Cost, margin & selling price
+    </p>
+
+  </div>
+
+
+  <div class="benefit">
+
+    <b>
+      FAST SELECTION
+    </b>
+
+    <p>
+      Search by category, brand or model
+    </p>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     APPLICATIONS
+========================== -->
+
+<section
+  class="section"
+  id="industries"
+>
+
+
+  <div class="section-title">
+
+
+    <div>
+
+      <small>
+        Applications
+      </small>
+
+
+      <h2>
+
+        BUILT AROUND
+
+        <span>
+          REAL PROJECTS
+        </span>
+
+      </h2>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="industry-grid">
+
+
+    <div class="industry">
+
+      <div>
+
+        <strong>
+          Generator Rooms
+        </strong>
+
+        <span>
+          Day tank & fuel supply
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="industry">
+
+      <div>
+
+        <strong>
+          Bulk Storage
+        </strong>
+
+        <span>
+          Main diesel storage systems
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="industry">
+
+      <div>
+
+        <strong>
+          Data Centers
+        </strong>
+
+        <span>
+          Critical fuel infrastructure
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="industry">
+
+      <div>
+
+        <strong>
+          Industrial
+        </strong>
+
+        <span>
+          Continuous-duty applications
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="industry">
+
+      <div>
+
+        <strong>
+          Infrastructure
+        </strong>
+
+        <span>
+          Project fuel systems
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="industry">
+
+      <div>
+
+        <strong>
+          Hospitality
+        </strong>
+
+        <span>
+          Backup power solutions
+        </span>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+  <span>
+    VEGA Engineering Solutions Co. Ltd.
+    · Fuel Systems Product Library
+  </span>
+
+  <span>
+    Internal Engineering Database
+  </span>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+  function openCategory(category){
+
+    window.location.href =
+      `catalog.html?category=${encodeURIComponent(category)}`;
+
+  }
+
+
+  function goCatalog(){
+
+    window.location.href =
+      "catalog.html";
+
+  }
+
+
+  const search =
+    document.getElementById(
+      "globalSearch"
+    );
+
+
+  const cards =
+    [
+      ...document.querySelectorAll(
+        ".category"
+      )
+    ];
+
+
+  search.addEventListener(
+    "input",
+    function(){
+
+      const q =
+        this.value
+        .trim()
+        .toLowerCase();
+
+
+      cards.forEach(
+        card => {
+
+          const matches =
+
+            card
+            .innerText
+            .toLowerCase()
+            .includes(q)
+
+            ||
+
+            card
+            .dataset
+            .search
+            .toLowerCase()
+            .includes(q);
+
+
+          card.style.display =
+            matches
+            ? "flex"
+            : "none";
+
+        }
+      );
+
+    }
+  );
+
+
+  search.addEventListener(
+    "keydown",
+    function(e){
+
+      if(
+        e.key === "Enter"
+      ){
+
+        const q =
+          this.value.trim();
+
+
+        if(q){
+
+          window.location.href =
+            `catalog.html?search=${encodeURIComponent(q)}`;
+
+        }
+
+      }
+
+    }
+  );
+
+</script>
+
+
+</body>
+</html>
