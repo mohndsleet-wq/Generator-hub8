@@ -1,275 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>VEGA Fuel Systems | Product Library</title>
 
 <style>
 
 /* =========================================================
-   GENERAL
+   GLOBAL
 ========================================================= */
 
 :root{
+
     --red:#ed1c24;
-    --red2:#ff3138;
-    --black:#080a0d;
-    --dark:#0d1014;
-    --dark2:#13171c;
-    --dark3:#191e24;
-    --line:#2a3038;
+    --red-dark:#bd1017;
+
+    --black:#08090b;
+    --dark:#101317;
+    --dark2:#171b20;
+    --line:#292f36;
+
     --white:#ffffff;
-    --muted:#929ba6;
     --light:#f4f5f6;
+
+    --text:#15181c;
+    --muted:#77808a;
+
 }
+
 
 *{
-    box-sizing:border-box;
+
     margin:0;
     padding:0;
+    box-sizing:border-box;
+
 }
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
+
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#080a0c;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:#08090b;
+
     color:white;
+
     overflow-x:hidden;
+
 }
+
 
 button,
 input,
 select{
-    font-family:inherit;
+
+    font:inherit;
+
 }
+
 
 button{
+
     cursor:pointer;
+
 }
 
+
 .hidden{
+
     display:none !important;
+
 }
+
 
 
 /* =========================================================
-   HEADER
+   PAGE 1
+   SHOWROOM IMAGE
 ========================================================= */
 
-header{
-    height:78px;
-    background:rgba(7,9,11,.96);
-    border-bottom:1px solid #242a31;
+#homePage{
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    width:100%;
 
-    padding:0 4%;
+    min-height:100vh;
 
-    position:sticky;
-    top:0;
+    background:#08090b;
 
-    z-index:1000;
-
-    backdrop-filter:blur(15px);
 }
 
 
-/* VEGA LOGO */
+.showroom-container{
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    cursor:pointer;
-}
-
-.logo-symbol{
     position:relative;
 
-    width:48px;
-    height:42px;
+    width:100%;
+
+    max-width:1920px;
+
+    margin:auto;
+
+    background:#08090b;
+
 }
 
-.logo-symbol::before,
-.logo-symbol::after{
-    content:"";
+
+.showroom-image{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+
+
+/* =========================================================
+   INVISIBLE PRODUCT AREAS
+========================================================= */
+
+.hotspot{
 
     position:absolute;
-    top:2px;
 
-    width:25px;
-    height:39px;
+    top:17%;
+
+    height:57%;
+
+    cursor:pointer;
+
+    border:
+        2px solid transparent;
+
+    transition:
+        background .25s,
+        border .25s,
+        box-shadow .25s;
+
+    z-index:10;
+
+}
+
+
+.hotspot:hover{
+
+    background:
+        rgba(237,28,36,.08);
+
+    border:
+        2px solid
+        rgba(237,28,36,.75);
+
+    box-shadow:
+
+        inset
+        0 0 30px
+        rgba(237,28,36,.15),
+
+        0 0 22px
+        rgba(237,28,36,.25);
+
+}
+
+
+/* VIEW PRODUCTS BUTTON */
+
+.hotspot::after{
+
+    content:"VIEW PRODUCTS  →";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:20px;
+
+    transform:
+        translateX(-50%)
+        translateY(8px);
+
+    white-space:nowrap;
+
+    padding:
+        10px
+        15px;
 
     background:var(--red);
 
-    clip-path:polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    color:white;
+
+    border-radius:4px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.8px;
+
+    opacity:0;
+
+    transition:.25s;
+
 }
 
-.logo-symbol::before{
+
+.hotspot:hover::after{
+
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+}
+
+
+
+/* =========================================================
+   HOTSPOT LOCATIONS
+========================================================= */
+
+.tanks{
+
+    left:9.2%;
+    width:15%;
+
+}
+
+
+.pumps{
+
+    left:25.1%;
+    width:14%;
+
+}
+
+
+.filters{
+
+    left:40.2%;
+    width:13.4%;
+
+}
+
+
+.valves{
+
+    left:54.5%;
+    width:12.6%;
+
+}
+
+
+.monitoring{
+
+    left:67.8%;
+    width:13.6%;
+
+}
+
+
+.controls{
+
+    left:82%;
+    width:13.8%;
+
+}
+
+
+
+/* =========================================================
+   PAGE 2
+   PRODUCT CATALOG
+========================================================= */
+
+#catalogPage{
+
+    min-height:100vh;
+
+    background:#f3f4f5;
+
+    color:var(--text);
+
+}
+
+
+
+/* =========================================================
+   CATALOG HEADER
+========================================================= */
+
+.catalog-header{
+
+    height:76px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:
+        0
+        4%;
+
+    background:#090b0e;
+
+    color:white;
+
+    border-bottom:
+        1px solid #242a30;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:500;
+
+}
+
+
+
+/* LOGO */
+
+.catalog-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    cursor:pointer;
+
+}
+
+
+.logo-mark{
+
+    width:42px;
+
+    height:37px;
+
+    position:relative;
+
+}
+
+
+.logo-mark::before,
+.logo-mark::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    width:22px;
+
+    height:37px;
+
+    background:var(--red);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+}
+
+
+.logo-mark::before{
+
     left:0;
+
 }
 
-.logo-symbol::after{
+
+.logo-mark::after{
+
     right:0;
+
 }
 
-.logo-name strong{
+
+.catalog-logo-text strong{
+
     display:block;
 
-    font-size:26px;
+    font-size:23px;
 
-    letter-spacing:5px;
+    letter-spacing:4px;
 
     line-height:1;
+
 }
 
-.logo-name span{
+
+.catalog-logo-text span{
+
     display:block;
 
     margin-top:5px;
 
     font-size:9px;
 
-    letter-spacing:4px;
+    letter-spacing:3px;
 
-    color:#8f98a4;
+    color:#949ca5;
+
 }
 
 
-/* NAV */
 
-nav{
-    display:flex;
-    align-items:center;
-    gap:30px;
-}
+/* HEADER SEARCH */
 
-nav a{
-    color:#c5c9ce;
+.header-search{
 
-    font-size:14px;
+    width:
+        min(
+            470px,
+            38vw
+        );
 
-    text-decoration:none;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-nav a:hover{
-    color:white;
-}
-
-
-/* HEADER RIGHT */
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.top-search{
     height:42px;
 
-    width:310px;
+    border:
+        1px solid #343b43;
 
     background:#12161a;
 
-    border:1px solid #343b43;
-
-    border-radius:9px;
-
-    padding:0 16px;
-
     color:white;
+
+    border-radius:7px;
+
+    padding:
+        0
+        15px;
 
     outline:none;
+
 }
 
-.top-search:focus{
-    border-color:#727c87;
+
+.header-search:focus{
+
+    border-color:
+        #7b858f;
+
 }
 
-.red-button{
-    height:43px;
 
-    border:0;
 
-    border-radius:8px;
+/* BACK BUTTON */
 
-    background:var(--red);
+.back-showroom{
+
+    border:
+        1px solid #464e57;
+
+    background:transparent;
 
     color:white;
 
-    padding:0 21px;
+    padding:
+        11px
+        17px;
+
+    border-radius:6px;
 
     font-weight:bold;
 
-    transition:.2s;
 }
 
-.red-button:hover{
-    background:var(--red2);
 
-    transform:translateY(-1px);
+.back-showroom:hover{
+
+    border-color:white;
+
 }
+
 
 
 /* =========================================================
-   PAGE SYSTEM
+   CATALOG TITLE
 ========================================================= */
 
-.page{
-    min-height:calc(100vh - 78px);
-}
-
-
-/* =========================================================
-   HOME / SHOWROOM
-========================================================= */
-
-#homePage{
+.catalog-title-bar{
 
     background:
 
-    radial-gradient(
-        circle at 70% 30%,
-        rgba(237,28,36,.08),
-        transparent 30%
-    ),
+        linear-gradient(
+            110deg,
+            #0d1014,
+            #12161a 65%,
+            #251015
+        );
 
-    linear-gradient(
-        180deg,
-        #0a0c0f,
-        #080a0d
-    );
-}
-
-
-/* HERO TOP */
-
-.hero-intro{
-
-    max-width:1650px;
-
-    margin:auto;
+    color:white;
 
     padding:
-        42px
-        4%
-        28px;
+        38px
+        5%;
 
     display:flex;
 
@@ -278,1124 +537,212 @@ nav a:hover{
     align-items:end;
 
     gap:30px;
-}
-
-
-.hero-intro small{
-
-    display:block;
-
-    font-size:11px;
-
-    letter-spacing:6px;
-
-    color:#929ba6;
-
-    margin-bottom:12px;
-}
-
-
-.hero-intro h1{
-
-    font-size:clamp(
-        38px,
-        4vw,
-        68px
-    );
-
-    line-height:.95;
-
-    letter-spacing:-2px;
-
-    text-transform:uppercase;
-}
-
-
-.hero-intro h1 span{
-    color:var(--red);
-}
-
-
-.hero-intro p{
-
-    max-width:520px;
-
-    color:#969fa9;
-
-    line-height:1.7;
-
-    font-size:14px;
-}
-
-
-/* =========================================================
-   SHOWROOM STRUCTURE
-========================================================= */
-
-.showroom-wrap{
-
-    max-width:1650px;
-
-    margin:auto;
-
-    padding:
-        0
-        4%
-        45px;
-}
-
-
-.showroom{
-
-    position:relative;
-
-    background:#111418;
-
-    border:
-        1px solid #2a3037;
-
-    box-shadow:
-        0 35px 90px rgba(0,0,0,.55);
-
-    overflow:hidden;
-
-    border-radius:4px;
-}
-
-
-/* showroom header */
-
-.showroom-banner{
-
-    height:118px;
-
-    padding:
-        24px
-        30px;
-
-    background:
-
-        linear-gradient(
-            120deg,
-            #111419 0%,
-            #15181c 55%,
-            #251217 100%
-        );
-
-    border-bottom:
-        1px solid #30363d;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-}
-
-
-.banner-left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:24px;
-}
-
-
-.banner-vega{
-
-    font-size:32px;
-
-    letter-spacing:4px;
-
-    font-weight:900;
-}
-
-
-.banner-line{
-
-    width:2px;
-
-    height:52px;
-
-    background:var(--red);
-}
-
-
-.banner-sub{
-
-    font-size:13px;
-
-    letter-spacing:3px;
-
-    line-height:1.5;
-
-    color:#dbdee1;
-}
-
-
-.banner-right{
-
-    text-align:right;
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    color:#bfc5cb;
-
-    line-height:1.6;
-}
-
-.banner-right strong{
-    color:var(--red);
-}
-
-
-/* =========================================================
-   SHOWROOM CABINETS
-========================================================= */
-
-.cabinets{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(6, 1fr);
-
-    min-height:610px;
-
-    background:#0e1114;
-}
-
-
-.cabinet{
-
-    position:relative;
-
-    display:flex;
-
-    flex-direction:column;
-
-    border-right:
-        1px solid #292f36;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #171b20 0%,
-            #0d1013 100%
-        );
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    overflow:hidden;
-}
-
-
-.cabinet:last-child{
-    border-right:0;
-}
-
-
-.cabinet:hover{
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #20252a 0%,
-            #101418 100%
-        );
-
-    transform:
-        translateY(-6px);
-
-    z-index:10;
-
-    box-shadow:
-        0 20px 35px rgba(0,0,0,.5);
-}
-
-
-.cabinet-title{
-
-    padding:
-        20px
-        16px
-        10px;
-
-    font-size:17px;
-
-    font-weight:900;
-
-    text-transform:uppercase;
-}
-
-
-.cabinet-title::after{
-
-    content:"";
-
-    display:block;
-
-    width:34px;
-
-    height:4px;
-
-    background:var(--red);
-
-    margin-top:9px;
-}
-
-
-/* =========================================================
-   PRODUCT DISPLAY
-========================================================= */
-
-.display-area{
-
-    margin:
-        0
-        12px
-        16px;
-
-    height:255px;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #ffffff 0%,
-            #ededed 42%,
-            #cacaca 100%
-        );
-
-    border-radius:3px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    box-shadow:
-        inset 0 0 50px rgba(0,0,0,.08);
-}
-
-
-/* =========================================================
-   CUSTOM PRODUCT DRAWINGS
-========================================================= */
-
-.tank-shape{
-
-    position:relative;
-
-    width:135px;
-
-    height:72px;
-
-    border-radius:38px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #777f84,
-            #d8dcdf,
-            #f5f5f5,
-            #999fa4
-        );
-
-    border:
-        2px solid #676d72;
-
-    box-shadow:
-        0 20px 20px rgba(0,0,0,.25);
-}
-
-
-.tank-shape::before,
-.tank-shape::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:9px;
-
-    width:31px;
-
-    height:51px;
-
-    border-radius:50%;
-
-    background:#bbc0c4;
-
-    border:
-        2px solid #6b7176;
-}
-
-
-.tank-shape::before{
-    left:-13px;
-}
-
-.tank-shape::after{
-    right:-13px;
-}
-
-
-.tank-leg{
-
-    position:absolute;
-
-    width:22px;
-
-    height:25px;
-
-    background:#555c61;
-
-    bottom:-20px;
-}
-
-.tank-leg.one{
-    left:25px;
-}
-
-.tank-leg.two{
-    right:25px;
-}
-
-
-/* PUMP */
-
-.pump-shape{
-
-    position:relative;
-
-    width:135px;
-
-    height:62px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #111,
-            #444,
-            #111
-        );
-
-    border-radius:10px;
-
-    box-shadow:
-        0 20px 20px rgba(0,0,0,.35);
-}
-
-
-.pump-shape::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:65px;
-
-    height:65px;
-
-    border-radius:50%;
-
-    background:#252a2e;
-
-    border:
-        9px solid #090a0b;
-
-    left:-35px;
-
-    top:-2px;
-}
-
-
-.pump-shape::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:22px;
-
-    height:35px;
-
-    right:-18px;
-
-    top:13px;
-
-    background:var(--red);
-
-    border-radius:4px;
-}
-
-
-/* FILTERS */
-
-.filter-group{
-
-    display:flex;
-
-    gap:20px;
-
-    align-items:flex-start;
-}
-
-
-.filter-unit{
-
-    position:relative;
-
-    width:53px;
-
-    height:115px;
-
-    border-radius:
-        8px 8px 18px 18px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #222,
-            #eee,
-            #8b8f92
-        );
-
-    border:
-        2px solid #333;
-
-    box-shadow:
-        0 20px 20px rgba(0,0,0,.3);
-}
-
-
-.filter-unit::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:66px;
-
-    height:17px;
-
-    border-radius:5px;
 
-    background:#222;
-
-    top:-12px;
-
-    left:-8px;
-}
-
-
-.filter-unit.small{
-
-    height:95px;
-
-    margin-top:20px;
-}
-
-
-/* VALVE */
-
-.valve-shape{
-
-    position:relative;
-
-    width:100px;
-
-    height:58px;
-
-    border-radius:15px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #97691f,
-            #d8a849,
-            #8d6119
-        );
-
-    box-shadow:
-        0 20px 20px rgba(0,0,0,.25);
-}
-
-
-.valve-shape::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:95px;
-
-    height:9px;
-
-    background:var(--red);
-
-    top:-38px;
-
-    left:45px;
-
-    border-radius:5px;
-}
-
-
-.valve-shape::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:14px;
-
-    height:34px;
-
-    background:#444;
-
-    top:-29px;
-
-    left:48px;
-}
-
-
-/* MONITOR */
-
-.monitor-shape{
-
-    width:110px;
-
-    height:105px;
-
-    background:#202429;
-
-    border:
-        5px solid #101214;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    box-shadow:
-        0 20px 22px rgba(0,0,0,.3);
-}
-
-
-.monitor-screen{
-
-    height:48px;
-
-    background:#08130d;
-
-    border-radius:5px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:24px;
-
-    font-weight:bold;
-}
-
-
-.monitor-lights{
-
-    margin-top:12px;
-
-    display:flex;
-
-    gap:9px;
-}
-
-
-.light{
-
-    width:9px;
-
-    height:9px;
-
-    border-radius:50%;
-
-    background:#42c86c;
-}
-
-.light.yellow{
-    background:#ffbe28;
-}
-
-.light.red{
-    background:#ed1c24;
-}
-
-
-/* CONTROL */
-
-.control-box{
-
-    width:125px;
-
-    height:145px;
-
-    border-radius:6px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #686f74,
-            #a2a8ac,
-            #666c71
-        );
-
-    border:
-        2px solid #555;
-
-    padding:15px;
-
-    box-shadow:
-        0 20px 20px rgba(0,0,0,.25);
-}
-
-
-.control-screen{
-
-    height:45px;
-
-    background:#171b1f;
-
-    border-radius:4px;
-
-    margin-bottom:18px;
-}
-
-
-.control-buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:11px;
-}
-
-
-.control-buttons i{
-
-    display:block;
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:#42bd69;
-}
-
-.control-buttons i:nth-child(2){
-    background:#ffc42f;
-}
-
-.control-buttons i:nth-child(3){
-    background:#ed1c24;
-}
-
-
-/* =========================================================
-   CABINET TEXT
-========================================================= */
-
-.cabinet ul{
-
-    list-style:none;
-
-    padding:
-        0
-        17px;
-
-    font-size:12px;
-
-    color:#d2d6da;
-
-    line-height:1.65;
-}
-
-
-.cabinet li{
-
-    position:relative;
-
-    padding-left:10px;
-}
-
-
-.cabinet li::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:4px;
-
-    height:4px;
-
-    border-radius:50%;
-
-    background:var(--red);
-
-    left:0;
-
-    top:8px;
-}
-
-
-/* SHOWROOM BROCHURE */
-
-.brochure{
-
-    margin:
-        auto
-        13px
-        16px;
-
-    min-height:95px;
-
-    border:
-        1px solid #333b43;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #f7f7f7 0%,
-            #ededed 60%,
-            #f2cccc 100%
-        );
-
-    color:#151719;
-
-    padding:14px;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-
-.brochure::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:80px;
-
-    height:160px;
-
-    right:-40px;
-
-    top:-35px;
-
-    background:var(--red);
-
-    transform:rotate(27deg);
-}
-
-
-.brochure small{
-
-    display:block;
-
-    position:relative;
-
-    z-index:2;
-
-    color:#686f76;
-
-    letter-spacing:2px;
-
-    font-size:9px;
-}
-
-
-.brochure strong{
-
-    display:block;
-
-    position:relative;
-
-    z-index:2;
-
-    font-size:16px;
-
-    margin-top:8px;
-}
-
-
-/* CLICK LABEL */
-
-.enter-label{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-        rgba(0,0,0,.72);
-
-    opacity:0;
-
-    transition:.25s;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    letter-spacing:1px;
-}
-
-
-.enter-label span{
-
-    background:var(--red);
-
-    padding:12px 18px;
-
-    border-radius:6px;
-}
-
-
-.cabinet:hover .enter-label{
-    opacity:1;
-}
-
-
-/* =========================================================
-   HOME BOTTOM
-========================================================= */
-
-.home-benefits{
-
-    max-width:1650px;
-
-    margin:
-        0 auto
-        55px;
-
-    padding:0 4%;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-}
-
-
-.home-benefit{
-
-    border:
-        1px solid #272d34;
-
-    padding:22px;
-
-    background:#0c0f12;
-}
-
-
-.home-benefit strong{
-
-    font-size:12px;
-
-    letter-spacing:.5px;
-}
-
-
-.home-benefit span{
-
-    display:block;
-
-    margin-top:6px;
-
-    color:#818b96;
-
-    font-size:11px;
-}
-
-
-/* =========================================================
-   CATALOG PAGE
-========================================================= */
-
-#catalogPage{
-
-    background:#f3f4f5;
-
-    color:#15181b;
-
-    min-height:
-        calc(100vh - 78px);
-}
-
-
-.catalog-hero{
-
-    background:#0d1014;
-
-    color:white;
-
-    padding:
-        37px
-        5%;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:25px;
 }
-
 
-.catalog-hero small{
 
-    color:#8f98a3;
+.catalog-small{
 
-    letter-spacing:4px;
+    color:#8f99a4;
 
     font-size:10px;
+
+    letter-spacing:4px;
+
 }
 
 
-.catalog-hero h2{
+.catalog-title-bar h1{
 
     margin-top:7px;
 
-    font-size:36px;
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            48px
+        );
+
+    text-transform:uppercase;
+
 }
 
 
-.catalog-hero h2 span{
+.catalog-title-bar h1 span{
+
     color:var(--red);
+
 }
 
 
-.back-button{
+.catalog-counter{
 
-    background:transparent;
+    text-align:right;
 
-    border:
-        1px solid #4c545d;
+    color:#a1a9b1;
+
+    font-size:12px;
+
+}
+
+
+.catalog-counter strong{
+
+    display:block;
 
     color:white;
 
-    border-radius:7px;
+    font-size:25px;
 
-    padding:
-        12px
-        18px;
-
-    font-weight:bold;
 }
 
 
-/* catalog container */
 
-.catalog-container{
+/* =========================================================
+   MAIN CATALOG
+========================================================= */
+
+.catalog-main{
 
     max-width:1550px;
 
     margin:auto;
 
     padding:
-        35px
+        32px
         4%
         80px;
+
 }
 
 
-/* filters */
 
-.filters{
+/* =========================================================
+   CATEGORY BUTTONS
+========================================================= */
+
+.category-tabs{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:8px;
+
+    margin-bottom:17px;
+
+}
+
+
+.category-tab{
+
+    min-height:70px;
+
+    border:
+        1px solid #d7dade;
 
     background:white;
 
-    border:
-        1px solid #dddfe1;
+    border-radius:7px;
 
-    border-radius:10px;
+    color:#282d31;
 
-    padding:17px;
+    font-weight:bold;
+
+    font-size:12px;
+
+    transition:.2s;
+
+}
+
+
+.category-tab:hover{
+
+    border-color:
+        var(--red);
+
+    color:var(--red);
+
+}
+
+
+.category-tab.active{
+
+    background:var(--red);
+
+    color:white;
+
+    border-color:var(--red);
+
+}
+
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.filters{
 
     display:grid;
 
     grid-template-columns:
         2fr
-        repeat(3,1fr);
+        1fr
+        1fr;
 
-    gap:12px;
+    gap:10px;
 
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.05);
+    padding:15px;
 
-    margin-bottom:26px;
+    background:white;
+
+    border:
+        1px solid #dbdee1;
+
+    border-radius:8px;
+
+    margin-bottom:24px;
+
 }
 
 
 .filters input,
 .filters select{
 
-    height:46px;
+    width:100%;
+
+    height:45px;
 
     border:
-        1px solid #d6dadd;
+        1px solid #d6d9dc;
 
-    border-radius:7px;
+    border-radius:5px;
 
-    padding:0 13px;
+    background:white;
+
+    padding:
+        0
+        12px;
 
     outline:none;
 
-    background:white;
 }
 
 
 .filters input:focus,
 .filters select:focus{
-    border-color:var(--red);
+
+    border-color:
+        var(--red);
+
 }
 
 
+
 /* =========================================================
-   PRODUCT CARDS
+   PRODUCT GRID
 ========================================================= */
 
 .product-grid{
@@ -1405,24 +752,31 @@ nav a:hover{
     grid-template-columns:
         repeat(4,1fr);
 
-    gap:18px;
+    gap:17px;
+
 }
 
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
 
 .product-card{
 
     background:white;
 
     border:
-        1px solid #dde0e3;
+        1px solid #dcdee1;
 
-    border-radius:12px;
+    border-radius:8px;
 
     overflow:hidden;
 
     transition:.25s;
 
     cursor:pointer;
+
 }
 
 
@@ -1432,24 +786,30 @@ nav a:hover{
         translateY(-5px);
 
     box-shadow:
-        0 18px 35px rgba(0,0,0,.11);
+        0 16px 35px
+        rgba(0,0,0,.12);
 
-    border-color:
-        #c4c8cc;
+    border-color:#bfc4c8;
+
 }
 
 
-.card-top{
 
-    height:235px;
+/* PRODUCT IMAGE AREA */
+
+.product-image{
+
+    position:relative;
+
+    height:230px;
 
     background:
 
         radial-gradient(
-            circle,
-            white 0%,
-            #f3f3f3 50%,
-            #dedede 100%
+            circle at center,
+            white 0,
+            #f0f1f2 55%,
+            #dddddd 100%
         );
 
     display:flex;
@@ -1458,172 +818,641 @@ nav a:hover{
 
     justify-content:center;
 
-    position:relative;
+    overflow:hidden;
+
 }
 
 
-.category-label{
+.product-category{
 
     position:absolute;
 
-    top:13px;
+    top:12px;
 
-    left:13px;
+    left:12px;
 
-    background:#121519;
+    background:#111519;
 
     color:white;
 
     padding:
-        7px
-        9px;
-
-    border-radius:4px;
+        6px
+        8px;
 
     font-size:9px;
 
+    border-radius:3px;
+
     text-transform:uppercase;
 
-    letter-spacing:1px;
 }
 
 
-.brand-label{
+.product-brand{
 
     position:absolute;
 
     top:13px;
 
-    right:13px;
+    right:12px;
 
     color:var(--red);
+
+    font-weight:900;
 
     font-size:12px;
 
+}
+
+
+
+/* =========================================================
+   CSS PRODUCT DRAWINGS
+========================================================= */
+
+.visual{
+
+    transform:
+        scale(1.2);
+
+}
+
+
+
+/* TANK */
+
+.visual-tank{
+
+    width:135px;
+
+    height:70px;
+
+    border-radius:36px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #70787e,
+            #cfd4d7 32%,
+            #f5f6f6 53%,
+            #868e94
+        );
+
+    border:
+        2px solid #6a7075;
+
+    position:relative;
+
+    box-shadow:
+        0 18px 18px
+        rgba(0,0,0,.2);
+
+}
+
+
+.visual-tank::before,
+.visual-tank::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:8px;
+
+    width:30px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    border:
+        2px solid #686e73;
+
+    background:#b5bbc0;
+
+}
+
+
+.visual-tank::before{
+
+    left:-12px;
+
+}
+
+
+.visual-tank::after{
+
+    right:-12px;
+
+}
+
+
+
+/* PUMP */
+
+.visual-pump{
+
+    width:130px;
+
+    height:60px;
+
+    border-radius:8px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #101214,
+            #474b4e,
+            #111315
+        );
+
+    position:relative;
+
+    box-shadow:
+        0 18px 18px
+        rgba(0,0,0,.25);
+
+}
+
+
+.visual-pump::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-35px;
+
+    top:-4px;
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#272b2e;
+
+    border:
+        9px solid
+        #08090a;
+
+}
+
+
+.visual-pump::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-19px;
+
+    top:13px;
+
+    width:25px;
+
+    height:35px;
+
+    border-radius:4px;
+
+    background:var(--red);
+
+}
+
+
+
+/* FILTER */
+
+.visual-filter{
+
+    display:flex;
+
+    gap:16px;
+
+}
+
+
+.visual-filter span{
+
+    display:block;
+
+    width:47px;
+
+    height:105px;
+
+    border-radius:
+        7px
+        7px
+        15px
+        15px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #24282b,
+            #f2f2f2,
+            #868b8f
+        );
+
+    border:
+        2px solid #34383b;
+
+    position:relative;
+
+}
+
+
+.visual-filter span::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-11px;
+
+    left:-7px;
+
+    width:58px;
+
+    height:16px;
+
+    background:#222628;
+
+    border-radius:4px;
+
+}
+
+
+
+/* VALVE */
+
+.visual-valve{
+
+    width:100px;
+
+    height:54px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #91611b,
+            #d6a347,
+            #845816
+        );
+
+    border-radius:14px;
+
+    position:relative;
+
+    box-shadow:
+        0 18px 18px
+        rgba(0,0,0,.2);
+
+}
+
+
+.visual-valve::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:88px;
+
+    height:9px;
+
+    left:46px;
+
+    top:-35px;
+
+    border-radius:5px;
+
+    background:var(--red);
+
+}
+
+
+.visual-valve::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:13px;
+
+    height:32px;
+
+    left:48px;
+
+    top:-28px;
+
+    background:#3a3e41;
+
+}
+
+
+
+/* MONITOR */
+
+.visual-monitor{
+
+    width:105px;
+
+    height:100px;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    background:#202428;
+
+    border:
+        5px solid #101214;
+
+    box-shadow:
+        0 18px 18px
+        rgba(0,0,0,.22);
+
+}
+
+
+.monitor-screen{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:46px;
+
+    border-radius:4px;
+
+    background:#07150d;
+
+    color:white;
+
+    font-size:23px;
+
     font-weight:bold;
+
 }
 
 
-/* PRODUCT ICON IN CARDS */
+.monitor-dots{
 
-.card-icon{
+    display:flex;
 
-    font-size:76px;
+    gap:8px;
 
-    filter:
-        grayscale(.2);
+    margin-top:11px;
 
-    user-select:none;
 }
 
 
-.card-content{
+.monitor-dots i{
 
-    padding:19px;
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#3ac76b;
+
 }
 
 
-.card-brand{
+.monitor-dots i:nth-child(2){
+
+    background:#f4bf30;
+
+}
+
+
+.monitor-dots i:nth-child(3){
+
+    background:var(--red);
+
+}
+
+
+
+/* CONTROL PANEL */
+
+.visual-control{
+
+    width:118px;
+
+    height:135px;
+
+    padding:15px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #646a70,
+            #aeb3b7,
+            #666c70
+        );
+
+    border:
+        2px solid #555b60;
+
+    border-radius:5px;
+
+    box-shadow:
+        0 18px 18px
+        rgba(0,0,0,.22);
+
+}
+
+
+.panel-screen{
+
+    height:43px;
+
+    background:#15191d;
+
+    border-radius:3px;
+
+}
+
+
+.panel-lights{
+
+    margin-top:17px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+
+.panel-lights i{
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:#45bf70;
+
+}
+
+
+.panel-lights i:nth-child(2){
+
+    background:#f3bf30;
+
+}
+
+
+.panel-lights i:nth-child(3){
+
+    background:var(--red);
+
+}
+
+
+
+/* =========================================================
+   PRODUCT CARD CONTENT
+========================================================= */
+
+.product-content{
+
+    padding:18px;
+
+}
+
+
+.brand-name{
 
     color:var(--red);
 
-    font-size:11px;
-
     font-weight:bold;
 
+    font-size:10px;
+
     text-transform:uppercase;
+
 }
 
 
-.card-title{
-
-    font-size:20px;
+.product-content h3{
 
     margin-top:5px;
 
-    font-weight:800;
+    font-size:18px;
+
+    line-height:1.2;
+
 }
 
 
-.card-model{
+.model{
 
-    color:#707981;
-
-    font-size:12px;
-
-    margin-top:4px;
-}
-
-
-.card-description{
-
-    color:#5e666d;
-
-    font-size:12px;
-
-    line-height:1.5;
-
-    margin-top:12px;
-
-    min-height:55px;
-}
-
-
-.spec-mini{
-
-    margin-top:13px;
-
-    border-top:
-        1px solid #eceeef;
-
-    padding-top:12px;
-
-    display:grid;
-
-    gap:7px;
-}
-
-
-.spec-mini div{
-
-    display:flex;
-
-    justify-content:space-between;
+    color:#818991;
 
     font-size:11px;
 
-    gap:10px;
+    margin-top:4px;
+
 }
 
 
-.spec-mini span{
-    color:#858d94;
+.description{
+
+    color:#616970;
+
+    font-size:12px;
+
+    line-height:1.55;
+
+    margin-top:11px;
+
+    min-height:57px;
+
 }
 
 
-.spec-mini strong{
-    color:#24282b;
-}
 
+/* SPECIFICATIONS */
 
-/* CARD BOTTOM */
-
-.card-bottom{
+.quick-specs{
 
     border-top:
-        1px solid #eceeef;
+        1px solid #ebedef;
 
-    margin-top:16px;
+    margin-top:13px;
 
-    padding-top:15px;
+    padding-top:12px;
+
+}
+
+
+.quick-spec{
 
     display:flex;
-
-    align-items:end;
 
     justify-content:space-between;
 
     gap:10px;
+
+    padding:
+        4px
+        0;
+
+    font-size:10px;
+
+}
+
+
+.quick-spec span{
+
+    color:#8a9299;
+
+}
+
+
+.quick-spec strong{
+
+    text-align:right;
+
+}
+
+
+
+/* PRICE AREA */
+
+.card-footer{
+
+    margin-top:14px;
+
+    border-top:
+        1px solid #ebedef;
+
+    padding-top:14px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    gap:10px;
+
 }
 
 
@@ -1631,9 +1460,10 @@ nav a:hover{
 
     display:block;
 
-    font-size:9px;
+    color:#92999f;
 
-    color:#93999f;
+    font-size:8px;
+
 }
 
 
@@ -1641,48 +1471,51 @@ nav a:hover{
 
     display:block;
 
-    margin-top:4px;
-
     color:var(--red);
 
-    font-size:21px;
+    margin-top:3px;
+
+    font-size:19px;
+
 }
 
 
-.view-product{
-
-    background:#161a1e;
-
-    color:white;
+.details-button{
 
     border:0;
 
-    border-radius:6px;
+    background:#14181c;
+
+    color:white;
 
     padding:
-        10px
-        13px;
+        9px
+        12px;
 
-    font-size:11px;
+    border-radius:4px;
+
+    font-size:10px;
 
     font-weight:bold;
+
 }
 
 
+
 /* =========================================================
-   PRODUCT DETAIL MODAL
+   PRODUCT MODAL
 ========================================================= */
 
-.modal{
+#productModal{
 
     position:fixed;
 
     inset:0;
 
-    z-index:5000;
+    z-index:3000;
 
     background:
-        rgba(0,0,0,.72);
+        rgba(0,0,0,.78);
 
     backdrop-filter:
         blur(8px);
@@ -1693,26 +1526,24 @@ nav a:hover{
 
     justify-content:center;
 
-    padding:30px;
+    padding:25px;
+
 }
 
 
-.modal-card{
+.modal-box{
 
-    width:min(1050px,96vw);
+    position:relative;
 
-    max-height:90vh;
+    width:
+        min(
+            1050px,
+            96vw
+        );
+
+    max-height:92vh;
 
     overflow:auto;
-
-    background:white;
-
-    color:#17191b;
-
-    border-radius:14px;
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.5);
 
     display:grid;
 
@@ -1720,17 +1551,26 @@ nav a:hover{
         .9fr
         1.1fr;
 
-    position:relative;
+    background:white;
+
+    color:#171a1d;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.5);
+
 }
 
 
-.close-modal{
+.modal-close{
 
     position:absolute;
 
-    top:16px;
+    top:15px;
 
-    right:16px;
+    right:15px;
 
     width:38px;
 
@@ -1740,27 +1580,23 @@ nav a:hover{
 
     border-radius:50%;
 
-    background:#15181b;
+    background:#111519;
 
     color:white;
 
-    z-index:5;
+    font-size:20px;
 
-    font-size:18px;
+    z-index:20;
+
 }
 
 
-.modal-image{
+
+/* MODAL VISUAL */
+
+.modal-visual{
 
     min-height:570px;
-
-    background:
-
-        radial-gradient(
-            circle,
-            #fff,
-            #ededed
-        );
 
     display:flex;
 
@@ -1768,16 +1604,26 @@ nav a:hover{
 
     justify-content:center;
 
-    font-size:145px;
+    background:
+
+        radial-gradient(
+            circle,
+            white,
+            #e3e5e6
+        );
+
 }
 
+
+
+/* MODAL INFORMATION */
 
 .modal-info{
 
     padding:
-        52px
-        44px
-        40px;
+        50px
+        42px;
+
 }
 
 
@@ -1785,54 +1631,64 @@ nav a:hover{
 
     color:var(--red);
 
-    font-size:11px;
-
-    font-weight:bold;
-
     text-transform:uppercase;
 
     letter-spacing:2px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
 }
 
 
 .modal-info h2{
 
-    margin-top:8px;
+    margin-top:7px;
 
-    font-size:36px;
+    font-size:34px;
+
 }
 
 
-.modal-brand{
+.modal-model{
 
-    margin-top:6px;
+    margin-top:5px;
 
-    color:#727a82;
+    color:#798189;
+
+    font-size:13px;
+
 }
 
 
-.modal-desc{
+.modal-description{
 
     margin-top:20px;
 
-    color:#5e666c;
+    font-size:13px;
+
+    color:#5e666e;
 
     line-height:1.7;
 
-    font-size:14px;
 }
 
 
-.detail-table{
 
-    margin-top:25px;
+/* DETAILS TABLE */
+
+.details-table{
 
     border:
-        1px solid #e2e4e6;
+        1px solid #e0e3e5;
 
-    border-radius:7px;
+    margin-top:23px;
+
+    border-radius:5px;
 
     overflow:hidden;
+
 }
 
 
@@ -1841,69 +1697,78 @@ nav a:hover{
     display:grid;
 
     grid-template-columns:
-        1fr
-        1.5fr;
+        .8fr
+        1.2fr;
 
     border-bottom:
-        1px solid #e5e7e8;
+        1px solid #e4e6e8;
 
-    font-size:12px;
+    font-size:11px;
+
 }
 
 
 .detail-row:last-child{
+
     border-bottom:0;
+
 }
 
 
 .detail-row span{
 
+    padding:11px;
+
     background:#f5f6f7;
 
-    color:#747c83;
+    color:#767e85;
 
-    padding:11px;
 }
 
 
 .detail-row strong{
+
     padding:11px;
+
 }
 
 
+
+/* PRICE */
+
 .modal-price{
 
-    margin-top:26px;
+    margin-top:23px;
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
 }
 
 
 .modal-price small{
 
-    display:block;
+    color:#858d94;
 
-    color:#7c858d;
+    font-size:9px;
 
-    font-size:10px;
 }
 
 
 .modal-price strong{
 
+    display:block;
+
     color:var(--red);
 
-    font-size:30px;
+    margin-top:3px;
+
+    font-size:29px;
+
 }
 
 
-.modal-actions{
 
-    margin-top:22px;
+/* ACTION BUTTONS */
+
+.modal-actions{
 
     display:grid;
 
@@ -1912,82 +1777,89 @@ nav a:hover{
         1fr;
 
     gap:10px;
+
+    margin-top:22px;
+
 }
 
 
-.action-red,
-.action-dark{
+.datasheet-button{
+
+    height:47px;
 
     border:0;
 
-    border-radius:6px;
-
-    height:48px;
-
-    font-weight:bold;
-}
-
-
-.action-red{
+    border-radius:5px;
 
     background:var(--red);
 
     color:white;
+
+    font-weight:bold;
+
 }
 
 
-.action-dark{
+.quote-button{
+
+    height:47px;
+
+    border:0;
+
+    border-radius:5px;
 
     background:#15191d;
 
     color:white;
+
+    font-weight:bold;
+
 }
 
 
+
 /* =========================================================
-   NO RESULTS
+   EMPTY
 ========================================================= */
 
-.no-results{
+.empty{
 
     grid-column:
         1 / -1;
 
     background:white;
 
-    padding:60px;
-
-    border-radius:10px;
+    border:
+        1px solid #ddd;
 
     text-align:center;
 
+    padding:70px;
+
     color:#777;
+
 }
+
 
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1250px){
-
-    nav{
-        display:none;
-    }
-
-    .cabinets{
-        grid-template-columns:
-            repeat(3,1fr);
-    }
-
-    .cabinet{
-        border-bottom:
-            1px solid #292f36;
-    }
+@media(max-width:1200px){
 
     .product-grid{
+
         grid-template-columns:
             repeat(3,1fr);
+
+    }
+
+    .category-tabs{
+
+        grid-template-columns:
+            repeat(4,1fr);
+
     }
 
 }
@@ -1995,861 +1867,238 @@ nav a:hover{
 
 @media(max-width:900px){
 
-    .top-search{
+    .header-search{
+
         display:none;
-    }
 
-    .hero-intro{
-        display:block;
-    }
-
-    .hero-intro p{
-        margin-top:20px;
-    }
-
-    .cabinets{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .home-benefits{
-        grid-template-columns:
-            1fr 1fr;
     }
 
     .product-grid{
+
         grid-template-columns:
             repeat(2,1fr);
+
     }
 
     .filters{
+
         grid-template-columns:
-            1fr 1fr;
+            1fr
+            1fr;
+
     }
 
-    .modal-card{
+    .modal-box{
+
         grid-template-columns:1fr;
+
     }
 
-    .modal-image{
-        min-height:300px;
+    .modal-visual{
+
+        min-height:320px;
+
     }
 
 }
 
 
-@media(max-width:580px){
+@media(max-width:600px){
 
-    header{
-        padding:0 15px;
+    .showroom-container{
+
+        overflow-x:auto;
+
     }
 
-    .red-button{
-        display:none;
+
+    .showroom-image{
+
+        width:1100px;
+
+        max-width:none;
+
     }
 
-    .logo-name strong{
-        font-size:20px;
-    }
 
-    .hero-intro{
-        padding:
-            30px
-            20px
-            20px;
-    }
+    .catalog-header{
 
-    .showroom-wrap{
-        padding:
-            0
-            15px
-            35px;
-    }
-
-    .showroom-banner{
-        height:auto;
-    }
-
-    .banner-right{
-        display:none;
-    }
-
-    .cabinets{
-        grid-template-columns:1fr;
-    }
-
-    .display-area{
-        height:220px;
-    }
-
-    .home-benefits{
-        grid-template-columns:1fr;
         padding:
             0
             15px;
+
     }
 
-    .catalog-hero{
+
+    .catalog-logo-text span{
+
+        display:none;
+
+    }
+
+
+    .back-showroom{
+
+        font-size:10px;
+
+    }
+
+
+    .catalog-title-bar{
+
+        display:block;
+
         padding:
-            25px
-            20px;
+            27px
+            18px;
+
     }
 
-    .catalog-hero h2{
-        font-size:26px;
+
+    .catalog-counter{
+
+        margin-top:17px;
+
+        text-align:left;
+
     }
 
-    .catalog-container{
+
+    .catalog-main{
+
         padding:
-            25px
-            15px
+            20px
+            14px
             60px;
+
     }
+
+
+    .category-tabs{
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+    }
+
 
     .filters{
+
         grid-template-columns:1fr;
+
     }
+
 
     .product-grid{
+
         grid-template-columns:1fr;
+
     }
 
-    .modal{
-        padding:10px;
-    }
 
     .modal-info{
+
         padding:
-            35px
-            20px;
+            38px
+            22px;
+
     }
 
-}
 
+    .modal-actions{
 
-/* =========================================================
-   FOOTER
-========================================================= */
+        grid-template-columns:1fr;
 
-footer{
+    }
 
-    background:#060708;
-
-    border-top:
-        1px solid #242a30;
-
-    padding:
-        26px
-        5%;
-
-    color:#656f79;
-
-    font-size:11px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
 }
 
 </style>
+
 </head>
+
 
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
-<header>
+<!-- =========================================================
+     HOME PAGE
+========================================================= -->
 
-    <div
-        class="logo"
-        onclick="showHome()"
-    >
-
-        <div class="logo-symbol"></div>
-
-        <div class="logo-name">
-
-            <strong>
-                VEGA
-            </strong>
-
-            <span>
-                FUEL SYSTEMS
-            </span>
-
-        </div>
-
-    </div>
+<section id="homePage">
 
 
-    <nav>
-
-        <a onclick="showHome()">
-            Home
-        </a>
-
-        <a onclick="showCatalog('all')">
-            Products
-        </a>
-
-        <a onclick="showCatalog('all')">
-            Brands
-        </a>
-
-        <a onclick="showCatalog('all')">
-            Datasheets
-        </a>
-
-        <a onclick="showCatalog('all')">
-            Price List
-        </a>
-
-    </nav>
+    <div class="showroom-container">
 
 
-    <div class="header-right">
-
-        <input
-            id="headerSearch"
-            class="top-search"
-            type="search"
-            placeholder="Search product, brand, model..."
+        <img
+            src="showroom.png"
+            alt="VEGA Fuel Systems Product Showroom"
+            class="showroom-image"
         >
 
-        <button
-            class="red-button"
-            onclick="showCatalog('all')"
-        >
-            Browse Catalog →
-        </button>
 
-    </div>
 
-</header>
+        <!-- FUEL TANKS -->
 
+        <div
+            class="hotspot tanks"
+            title="Fuel Tanks"
+            onclick="openCatalog('tanks')"
+        ></div>
 
 
-<!-- =====================================================
-     PAGE 1
-     SHOWROOM HOME
-===================================================== -->
 
-<section
-    id="homePage"
-    class="page"
->
+        <!-- PUMPS -->
 
+        <div
+            class="hotspot pumps"
+            title="Transfer Pumps"
+            onclick="openCatalog('pumps')"
+        ></div>
 
-    <div class="hero-intro">
 
-        <div>
 
-            <small>
-                VEGA ENGINEERING SOLUTIONS · FUEL SYSTEMS
-            </small>
+        <!-- FILTERS -->
 
-            <h1>
+        <div
+            class="hotspot filters"
+            title="Filtration"
+            onclick="openCatalog('filters')"
+        ></div>
 
-                COMPLETE FUEL
 
-                <span>
-                    SYSTEMS
-                </span>
 
-            </h1>
+        <!-- VALVES -->
 
-        </div>
+        <div
+            class="hotspot valves"
+            title="Valves & Accessories"
+            onclick="openCatalog('valves')"
+        ></div>
 
 
-        <p>
 
-            Internal product library for fuel storage,
-            transfer, filtration, valves, monitoring and
-            control systems. Select a product family below
-            to view available products, technical data,
-            pricing and datasheets.
+        <!-- MONITORING -->
 
-        </p>
+        <div
+            class="hotspot monitoring"
+            title="Monitoring"
+            onclick="openCatalog('monitoring')"
+        ></div>
 
-    </div>
 
 
+        <!-- CONTROL PANELS -->
 
-    <div class="showroom-wrap">
+        <div
+            class="hotspot controls"
+            title="Control Panels"
+            onclick="openCatalog('controls')"
+        ></div>
 
-        <div class="showroom">
-
-
-            <!-- SHOWROOM HEADER -->
-
-            <div class="showroom-banner">
-
-                <div class="banner-left">
-
-                    <div class="banner-vega">
-                        VEGA POWER
-                    </div>
-
-                    <div class="banner-line"></div>
-
-                    <div class="banner-sub">
-
-                        FUEL SYSTEM
-
-                        <br>
-
-                        PRODUCT LIBRARY
-
-                    </div>
-
-                </div>
-
-
-                <div class="banner-right">
-
-                    ENGINEERED FOR
-
-                    <br>
-
-                    <strong>
-                        RELIABILITY
-                    </strong>
-
-                    <br>
-
-                    BUILT FOR CONTINUITY
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CABINETS -->
-
-            <div class="cabinets">
-
-
-                <!-- TANKS -->
-
-                <div
-                    class="cabinet"
-                    onclick="showCatalog('tanks')"
-                >
-
-                    <div class="cabinet-title">
-                        Fuel Tanks
-                    </div>
-
-
-                    <div class="display-area">
-
-                        <div class="tank-shape">
-
-                            <div class="tank-leg one"></div>
-
-                            <div class="tank-leg two"></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Bulk Storage Tanks
-                        </li>
-
-                        <li>
-                            Generator Day Tanks
-                        </li>
-
-                        <li>
-                            Single Wall Tanks
-                        </li>
-
-                        <li>
-                            Double Wall Tanks
-                        </li>
-
-                        <li>
-                            Custom Fabrication
-                        </li>
-
-                    </ul>
-
-
-                    <div class="brochure">
-
-                        <small>
-                            PRODUCT RANGE
-                        </small>
-
-                        <strong>
-                            FUEL TANKS
-                        </strong>
-
-                    </div>
-
-
-                    <div class="enter-label">
-
-                        <span>
-                            VIEW PRODUCTS →
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PUMPS -->
-
-                <div
-                    class="cabinet"
-                    onclick="showCatalog('pumps')"
-                >
-
-                    <div class="cabinet-title">
-                        Pumps
-                    </div>
-
-
-                    <div class="display-area">
-
-                        <div class="pump-shape"></div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Diesel Transfer Pumps
-                        </li>
-
-                        <li>
-                            Duty / Standby Sets
-                        </li>
-
-                        <li>
-                            Fuel Filling Pumps
-                        </li>
-
-                        <li>
-                            Pump Skids
-                        </li>
-
-                        <li>
-                            Manual Backup Pumps
-                        </li>
-
-                    </ul>
-
-
-                    <div class="brochure">
-
-                        <small>
-                            PRODUCT RANGE
-                        </small>
-
-                        <strong>
-                            PUMPS
-                        </strong>
-
-                    </div>
-
-
-                    <div class="enter-label">
-
-                        <span>
-                            VIEW PRODUCTS →
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- FILTERS -->
-
-                <div
-                    class="cabinet"
-                    onclick="showCatalog('filters')"
-                >
-
-                    <div class="cabinet-title">
-                        Filters
-                    </div>
-
-
-                    <div class="display-area">
-
-                        <div class="filter-group">
-
-                            <div class="filter-unit"></div>
-
-                            <div class="filter-unit small"></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Fuel Filters
-                        </li>
-
-                        <li>
-                            Water Separators
-                        </li>
-
-                        <li>
-                            Fuel Polishing
-                        </li>
-
-                        <li>
-                            Strainers
-                        </li>
-
-                        <li>
-                            Filter Elements
-                        </li>
-
-                    </ul>
-
-
-                    <div class="brochure">
-
-                        <small>
-                            PRODUCT RANGE
-                        </small>
-
-                        <strong>
-                            FILTRATION
-                        </strong>
-
-                    </div>
-
-
-                    <div class="enter-label">
-
-                        <span>
-                            VIEW PRODUCTS →
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- VALVES -->
-
-                <div
-                    class="cabinet"
-                    onclick="showCatalog('valves')"
-                >
-
-                    <div class="cabinet-title">
-                        Valves
-                    </div>
-
-
-                    <div class="display-area">
-
-                        <div class="valve-shape"></div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Ball Valves
-                        </li>
-
-                        <li>
-                            Check Valves
-                        </li>
-
-                        <li>
-                            Solenoid Valves
-                        </li>
-
-                        <li>
-                            Overfill Valves
-                        </li>
-
-                        <li>
-                            Flame Arrestors
-                        </li>
-
-                    </ul>
-
-
-                    <div class="brochure">
-
-                        <small>
-                            PRODUCT RANGE
-                        </small>
-
-                        <strong>
-                            VALVES
-                        </strong>
-
-                    </div>
-
-
-                    <div class="enter-label">
-
-                        <span>
-                            VIEW PRODUCTS →
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- MONITORING -->
-
-                <div
-                    class="cabinet"
-                    onclick="showCatalog('monitoring')"
-                >
-
-                    <div class="cabinet-title">
-                        Monitoring
-                    </div>
-
-
-                    <div class="display-area">
-
-                        <div class="monitor-shape">
-
-                            <div class="monitor-screen">
-                                78%
-                            </div>
-
-                            <div class="monitor-lights">
-
-                                <div class="light"></div>
-
-                                <div class="light yellow"></div>
-
-                                <div class="light red"></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Tank Level Indicators
-                        </li>
-
-                        <li>
-                            ATG Systems
-                        </li>
-
-                        <li>
-                            Level Sensors
-                        </li>
-
-                        <li>
-                            Leak Detection
-                        </li>
-
-                        <li>
-                            Flow Meters
-                        </li>
-
-                    </ul>
-
-
-                    <div class="brochure">
-
-                        <small>
-                            PRODUCT RANGE
-                        </small>
-
-                        <strong>
-                            MONITORING
-                        </strong>
-
-                    </div>
-
-
-                    <div class="enter-label">
-
-                        <span>
-                            VIEW PRODUCTS →
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- CONTROLS -->
-
-                <div
-                    class="cabinet"
-                    onclick="showCatalog('controls')"
-                >
-
-                    <div class="cabinet-title">
-                        Control Panels
-                    </div>
-
-
-                    <div class="display-area">
-
-                        <div class="control-box">
-
-                            <div class="control-screen"></div>
-
-                            <div class="control-buttons">
-
-                                <i></i>
-
-                                <i></i>
-
-                                <i></i>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Fuel Transfer Panels
-                        </li>
-
-                        <li>
-                            Pump Sequencing
-                        </li>
-
-                        <li>
-                            Level Controls
-                        </li>
-
-                        <li>
-                            BMS Interface
-                        </li>
-
-                        <li>
-                            Alarm Panels
-                        </li>
-
-                    </ul>
-
-
-                    <div class="brochure">
-
-                        <small>
-                            PRODUCT RANGE
-                        </small>
-
-                        <strong>
-                            CONTROL PANELS
-                        </strong>
-
-                    </div>
-
-
-                    <div class="enter-label">
-
-                        <span>
-                            VIEW PRODUCTS →
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="home-benefits">
-
-        <div class="home-benefit">
-
-            <strong>
-                PRODUCT DATABASE
-            </strong>
-
-            <span>
-                All fuel system products in one place
-            </span>
-
-        </div>
-
-
-        <div class="home-benefit">
-
-            <strong>
-                TECHNICAL DATA
-            </strong>
-
-            <span>
-                Product specifications and descriptions
-            </span>
-
-        </div>
-
-
-        <div class="home-benefit">
-
-            <strong>
-                DATASHEET LIBRARY
-            </strong>
-
-            <span>
-                Direct access to technical documents
-            </span>
-
-        </div>
-
-
-        <div class="home-benefit">
-
-            <strong>
-                PRICE DATABASE
-            </strong>
-
-            <span>
-                Supplier cost and selling price
-            </span>
-
-        </div>
 
     </div>
 
@@ -2858,27 +2107,81 @@ footer{
 
 
 
-<!-- =====================================================
-     PAGE 2
-     PRODUCT CATALOG
-===================================================== -->
+<!-- =========================================================
+     PRODUCT CATALOG PAGE
+========================================================= -->
 
 <section
     id="catalogPage"
-    class="page hidden"
+    class="hidden"
 >
 
 
-    <div class="catalog-hero">
+    <!-- HEADER -->
+
+    <header class="catalog-header">
+
+
+        <div
+            class="catalog-logo"
+            onclick="goHome()"
+        >
+
+
+            <div class="logo-mark"></div>
+
+
+            <div class="catalog-logo-text">
+
+                <strong>
+                    VEGA
+                </strong>
+
+                <span>
+                    FUEL SYSTEMS
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <input
+            id="headerSearch"
+            class="header-search"
+            type="search"
+            placeholder="Search product, brand, model..."
+        >
+
+
+
+        <button
+            class="back-showroom"
+            onclick="goHome()"
+        >
+            ← SHOWROOM
+        </button>
+
+
+    </header>
+
+
+
+    <!-- TITLE -->
+
+    <div class="catalog-title-bar">
 
 
         <div>
 
-            <small>
-                VEGA FUEL SYSTEMS
-            </small>
+            <div class="catalog-small">
+                VEGA ENGINEERING SOLUTIONS
+            </div>
 
-            <h2>
+
+            <h1>
 
                 PRODUCT
 
@@ -2886,24 +2189,102 @@ footer{
                     CATALOG
                 </span>
 
-            </h2>
+            </h1>
 
         </div>
 
 
-        <button
-            class="back-button"
-            onclick="showHome()"
-        >
-            ← Back to Showroom
-        </button>
+
+        <div class="catalog-counter">
+
+            PRODUCTS FOUND
+
+            <strong id="productCount">
+                0
+            </strong>
+
+        </div>
 
 
     </div>
 
 
 
-    <div class="catalog-container">
+    <!-- MAIN -->
+
+    <main class="catalog-main">
+
+
+        <!-- CATEGORIES -->
+
+        <div class="category-tabs">
+
+
+            <button
+                class="category-tab active"
+                data-category="all"
+                onclick="setCategory('all',this)"
+            >
+                ALL PRODUCTS
+            </button>
+
+
+            <button
+                class="category-tab"
+                data-category="tanks"
+                onclick="setCategory('tanks',this)"
+            >
+                FUEL TANKS
+            </button>
+
+
+            <button
+                class="category-tab"
+                data-category="pumps"
+                onclick="setCategory('pumps',this)"
+            >
+                PUMPS
+            </button>
+
+
+            <button
+                class="category-tab"
+                data-category="filters"
+                onclick="setCategory('filters',this)"
+            >
+                FILTRATION
+            </button>
+
+
+            <button
+                class="category-tab"
+                data-category="valves"
+                onclick="setCategory('valves',this)"
+            >
+                VALVES
+            </button>
+
+
+            <button
+                class="category-tab"
+                data-category="monitoring"
+                onclick="setCategory('monitoring',this)"
+            >
+                MONITORING
+            </button>
+
+
+            <button
+                class="category-tab"
+                data-category="controls"
+                onclick="setCategory('controls',this)"
+            >
+                CONTROL PANELS
+            </button>
+
+
+        </div>
+
 
 
         <!-- FILTERS -->
@@ -2914,41 +2295,8 @@ footer{
             <input
                 id="catalogSearch"
                 type="search"
-                placeholder="Search product, brand, model or keyword..."
+                placeholder="Search product, model, brand or keyword..."
             >
-
-
-            <select id="categoryFilter">
-
-                <option value="all">
-                    All Categories
-                </option>
-
-                <option value="tanks">
-                    Fuel Tanks
-                </option>
-
-                <option value="pumps">
-                    Pumps
-                </option>
-
-                <option value="filters">
-                    Filters
-                </option>
-
-                <option value="valves">
-                    Valves
-                </option>
-
-                <option value="monitoring">
-                    Monitoring
-                </option>
-
-                <option value="controls">
-                    Control Panels
-                </option>
-
-            </select>
 
 
             <select id="brandFilter">
@@ -2957,49 +2305,50 @@ footer{
                     All Brands
                 </option>
 
-                <option value="vega">
+                <option value="VEGA">
                     VEGA
                 </option>
 
-                <option value="piusi">
+                <option value="PIUSI">
                     PIUSI
                 </option>
 
-                <option value="opw">
+                <option value="OPW">
                     OPW
                 </option>
 
-                <option value="parker">
+                <option value="PARKER">
                     PARKER
                 </option>
 
-                <option value="gala">
+                <option value="GALA">
                     GALA
                 </option>
 
-                <option value="cst">
+                <option value="CST">
                     CST
                 </option>
 
             </select>
 
 
+
             <select id="sortFilter">
 
                 <option value="default">
-                    Sort By
-                </option>
-
-                <option value="price-low">
-                    Price: Low to High
-                </option>
-
-                <option value="price-high">
-                    Price: High to Low
+                    Sort Products
                 </option>
 
                 <option value="name">
-                    Product Name
+                    Name A-Z
+                </option>
+
+                <option value="priceLow">
+                    Price Low → High
+                </option>
+
+                <option value="priceHigh">
+                    Price High → Low
                 </option>
 
             </select>
@@ -3009,43 +2358,48 @@ footer{
 
 
 
+        <!-- PRODUCTS -->
+
         <div
             id="productGrid"
             class="product-grid"
         ></div>
 
 
-    </div>
+    </main>
 
 
 </section>
 
 
 
-<!-- =====================================================
-     PRODUCT DETAIL POPUP
-===================================================== -->
+<!-- =========================================================
+     PRODUCT DETAILS
+========================================================= -->
 
 <div
     id="productModal"
-    class="modal hidden"
+    class="hidden"
 >
 
-    <div class="modal-card">
+
+    <div class="modal-box">
 
 
         <button
-            class="close-modal"
+            class="modal-close"
             onclick="closeProduct()"
         >
             ×
         </button>
 
 
+
         <div
-            id="modalImage"
-            class="modal-image"
+            id="modalVisual"
+            class="modal-visual"
         ></div>
+
 
 
         <div class="modal-info">
@@ -3061,52 +2415,51 @@ footer{
 
 
             <div
-                id="modalBrand"
-                class="modal-brand"
+                id="modalModel"
+                class="modal-model"
             ></div>
 
 
             <p
                 id="modalDescription"
-                class="modal-desc"
+                class="modal-description"
             ></p>
 
 
+
             <div
-                id="detailTable"
-                class="detail-table"
+                id="detailsTable"
+                class="details-table"
             ></div>
+
 
 
             <div class="modal-price">
 
-                <div>
+                <small>
+                    SELLING PRICE
+                </small>
 
-                    <small>
-                        SELLING PRICE
-                    </small>
-
-                    <strong id="modalPrice"></strong>
-
-                </div>
+                <strong id="modalPrice"></strong>
 
             </div>
+
 
 
             <div class="modal-actions">
 
 
                 <button
-                    class="action-red"
+                    class="datasheet-button"
                     onclick="openDatasheet()"
                 >
-                    📄 OPEN DATASHEET
+                    📄 VIEW DATASHEET
                 </button>
 
 
                 <button
-                    class="action-dark"
-                    onclick="alert('Quotation function can be connected later.')"
+                    class="quote-button"
+                    onclick="requestQuotation()"
                 >
                     REQUEST QUOTATION
                 </button>
@@ -3117,401 +2470,880 @@ footer{
 
         </div>
 
+
     </div>
 
+
 </div>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <span>
-        VEGA Engineering Solutions Co. Ltd.
-        · Fuel Systems Product Library
-    </span>
-
-    <span>
-        Internal Engineering Database
-    </span>
-
-</footer>
 
 
 
 <script>
 
 /* =========================================================
-   PRODUCT DATABASE
-   Add your real products here later.
+   PRODUCT DATA
 ========================================================= */
 
 const products = [
 
+
+/* ===================== TANKS ===================== */
+
 {
+
     id:1,
+
     category:"tanks",
+
     categoryName:"Fuel Tanks",
+
     brand:"CST",
+
     model:"DT-1000",
+
     name:"Generator Day Tank",
-    icon:"🛢️",
+
+    visual:"tank",
+
     price:18500,
-    description:"Generator day tank designed for controlled fuel supply and automatic refilling.",
+
+    description:
+        "Generator day tank designed to provide a stable and controlled diesel fuel supply to the generator engine.",
+
     specs:{
+
         "Capacity":"1,000 Liters",
+
         "Tank Type":"Day Tank",
-        "Construction":"Carbon Steel",
+
+        "Material":"Carbon Steel",
+
         "Configuration":"Single Wall",
+
         "Application":"Diesel Generator"
+
     },
+
     datasheet:""
+
 },
 
+
 {
+
     id:2,
+
     category:"tanks",
+
     categoryName:"Fuel Tanks",
+
     brand:"CST",
-    model:"UL142-5000",
-    name:"Aboveground Fuel Storage Tank",
-    icon:"🛢️",
+
+    model:"BT-5000",
+
+    name:"Bulk Fuel Storage Tank",
+
+    visual:"tank",
+
     price:58000,
-    description:"Aboveground diesel fuel storage tank suitable for bulk fuel storage applications.",
+
+    description:
+        "Aboveground fuel storage tank for bulk diesel storage and generator fuel system applications.",
+
     specs:{
+
         "Capacity":"5,000 Liters",
+
         "Tank Type":"Bulk Storage",
-        "Construction":"Carbon Steel",
-        "Standard":"UL 142",
-        "Application":"Fuel Storage"
+
+        "Material":"Carbon Steel",
+
+        "Installation":"Aboveground",
+
+        "Application":"Diesel Storage"
+
     },
+
     datasheet:""
+
 },
 
+
+/* ===================== PUMPS ===================== */
+
 {
+
     id:3,
+
     category:"pumps",
+
     categoryName:"Transfer Pumps",
+
     brand:"PIUSI",
+
     model:"E120",
+
     name:"Electric Diesel Transfer Pump",
-    icon:"⚙️",
+
+    visual:"pump",
+
     price:4250,
-    description:"Self-priming electric diesel transfer pump for reliable fuel transfer applications.",
+
+    description:
+        "Self-priming electric diesel transfer pump designed for reliable fuel transfer duties.",
+
     specs:{
+
         "Flow Rate":"120 L/min",
+
         "Voltage":"230 V",
+
         "Duty":"Continuous",
+
         "Fluid":"Diesel",
+
         "Application":"Fuel Transfer"
+
     },
+
     datasheet:""
+
 },
 
+
 {
+
     id:4,
+
     category:"pumps",
+
     categoryName:"Transfer Pumps",
+
     brand:"PIUSI",
+
     model:"E80",
-    name:"Diesel Transfer Pump",
-    icon:"⚙️",
+
+    name:"Electric Transfer Pump",
+
+    visual:"pump",
+
     price:3450,
-    description:"Compact electric transfer pump suitable for diesel filling and transfer.",
+
+    description:
+        "Compact electric transfer pump suitable for diesel filling and transfer applications.",
+
     specs:{
+
         "Flow Rate":"70 L/min",
+
         "Voltage":"230 V",
+
         "Connection":"1 inch",
+
         "Fluid":"Diesel",
+
         "Installation":"Fixed"
+
     },
+
     datasheet:""
+
 },
 
+
+/* ===================== FILTERS ===================== */
+
 {
+
     id:5,
+
     category:"filters",
+
     categoryName:"Filtration",
+
     brand:"PARKER",
-    model:"RACOR-1000",
+
+    model:"RACOR 1000",
+
     name:"Fuel Filter Water Separator",
-    icon:"🔩",
+
+    visual:"filter",
+
     price:2850,
-    description:"Fuel filtration and water separation system for diesel fuel applications.",
+
+    description:
+        "Fuel filtration and water separation unit for protecting diesel fuel systems and engines.",
+
     specs:{
+
         "Filtration":"10 Micron",
+
         "Type":"Water Separator",
-        "Fuel":"Diesel",
-        "Installation":"Inline",
-        "Application":"Fuel Treatment"
-    },
-    datasheet:""
-},
 
-{
-    id:6,
-    category:"filters",
-    categoryName:"Filtration",
-    brand:"VEGA",
-    model:"FP-500",
-    name:"Fuel Polishing Filter",
-    icon:"🔩",
-    price:5200,
-    description:"Heavy duty fuel filtration component used in fuel polishing arrangements.",
-    specs:{
-        "Service":"Fuel Polishing",
-        "Fuel":"Diesel",
-        "Element":"Replaceable",
-        "Mounting":"Skid",
-        "Application":"Bulk Tank"
-    },
-    datasheet:""
-},
-
-{
-    id:7,
-    category:"valves",
-    categoryName:"Valves & Accessories",
-    brand:"GALA",
-    model:"BV-2",
-    name:"Ball Valve",
-    icon:"🔧",
-    price:210,
-    description:"Isolation ball valve for fuel piping and diesel transfer systems.",
-    specs:{
-        "Size":"2 inch",
-        "Type":"Ball Valve",
-        "Material":"Brass",
-        "Service":"Diesel Fuel",
-        "Connection":"Threaded"
-    },
-    datasheet:""
-},
-
-{
-    id:8,
-    category:"valves",
-    categoryName:"Valves & Accessories",
-    brand:"OPW",
-    model:"53VML",
-    name:"Overfill Prevention Valve",
-    icon:"🔧",
-    price:3950,
-    description:"Automatic overfill prevention valve for safe filling of fuel storage tanks.",
-    specs:{
-        "Size":"2 inch",
-        "Function":"Overfill Prevention",
-        "Application":"Fuel Tank",
-        "Operation":"Automatic",
-        "Brand":"OPW"
-    },
-    datasheet:""
-},
-
-{
-    id:9,
-    category:"valves",
-    categoryName:"Valves & Accessories",
-    brand:"OPW",
-    model:"623V",
-    name:"Vent Cap with Flame Arrestor",
-    icon:"🔧",
-    price:1650,
-    description:"Tank venting accessory with flame arrestor for diesel fuel storage systems.",
-    specs:{
-        "Size":"2 inch",
-        "Type":"Vent Cap",
-        "Protection":"Flame Arrestor",
-        "Application":"Fuel Tank Vent",
-        "Installation":"Tank Top"
-    },
-    datasheet:""
-},
-
-{
-    id:10,
-    category:"monitoring",
-    categoryName:"Monitoring",
-    brand:"PIUSI",
-    model:"OCIO",
-    name:"Tank Level Indicator",
-    icon:"📟",
-    price:1786,
-    description:"Continuous tank level monitoring system for diesel fuel tanks.",
-    specs:{
-        "Measurement":"Continuous Level",
-        "Application":"Fuel Tank",
-        "Display":"Digital",
-        "Alarm":"Configurable",
-        "Installation":"Remote"
-    },
-    datasheet:""
-},
-
-{
-    id:11,
-    category:"monitoring",
-    categoryName:"Monitoring",
-    brand:"PIUSI",
-    model:"K24",
-    name:"Digital Fuel Flow Meter",
-    icon:"📟",
-    price:2450,
-    description:"Digital fuel flow meter for monitoring diesel transfer quantities.",
-    specs:{
-        "Type":"Digital Flow Meter",
         "Fluid":"Diesel",
-        "Display":"Digital",
-        "Application":"Fuel Transfer",
-        "Installation":"Inline"
+
+        "Installation":"Inline",
+
+        "Application":"Fuel Treatment"
+
     },
+
     datasheet:""
+
 },
 
+
 {
-    id:12,
-    category:"controls",
-    categoryName:"Control Panels",
+
+    id:6,
+
+    category:"filters",
+
+    categoryName:"Filtration",
+
     brand:"VEGA",
-    model:"FCP-01",
-    name:"Fuel System Control Panel",
-    icon:"🖥️",
-    price:12500,
-    description:"Automatic fuel transfer control panel with pump sequencing and alarm functions.",
+
+    model:"FP-500",
+
+    name:"Fuel Polishing Filter",
+
+    visual:"filter",
+
+    price:5200,
+
+    description:
+        "Fuel filtration component intended for diesel fuel polishing and recirculation systems.",
+
     specs:{
-        "Control":"Automatic",
-        "Pump Logic":"Duty / Standby",
-        "Interface":"BMS",
-        "Operation":"Manual / Auto",
-        "Application":"Fuel Transfer System"
+
+        "Service":"Fuel Polishing",
+
+        "Fluid":"Diesel",
+
+        "Element":"Replaceable",
+
+        "Installation":"Skid",
+
+        "Application":"Bulk Storage"
+
     },
+
     datasheet:""
+
 },
 
+
+/* ===================== VALVES ===================== */
+
 {
-    id:13,
+
+    id:7,
+
+    category:"valves",
+
+    categoryName:"Valves & Accessories",
+
+    brand:"GALA",
+
+    model:"BV-2",
+
+    name:"Fuel Ball Valve",
+
+    visual:"valve",
+
+    price:210,
+
+    description:
+        "Isolation ball valve for diesel fuel piping and fuel transfer system applications.",
+
+    specs:{
+
+        "Size":"2 inch",
+
+        "Type":"Ball Valve",
+
+        "Material":"Brass",
+
+        "Service":"Diesel Fuel",
+
+        "Connection":"Threaded"
+
+    },
+
+    datasheet:""
+
+},
+
+
+{
+
+    id:8,
+
+    category:"valves",
+
+    categoryName:"Valves & Accessories",
+
+    brand:"OPW",
+
+    model:"53VML",
+
+    name:"Overfill Prevention Valve",
+
+    visual:"valve",
+
+    price:3950,
+
+    description:
+        "Automatic tank overfill prevention valve used during fuel filling operations.",
+
+    specs:{
+
+        "Size":"2 inch",
+
+        "Function":"Overfill Prevention",
+
+        "Application":"Fuel Tank",
+
+        "Operation":"Automatic",
+
+        "Service":"Diesel"
+
+    },
+
+    datasheet:""
+
+},
+
+
+{
+
+    id:9,
+
+    category:"valves",
+
+    categoryName:"Valves & Accessories",
+
+    brand:"OPW",
+
+    model:"623V",
+
+    name:"Vent Cap with Flame Arrestor",
+
+    visual:"valve",
+
+    price:1650,
+
+    description:
+        "Tank vent cap incorporating flame arrestor protection for diesel fuel storage tanks.",
+
+    specs:{
+
+        "Size":"2 inch",
+
+        "Type":"Vent Cap",
+
+        "Protection":"Flame Arrestor",
+
+        "Application":"Tank Vent",
+
+        "Installation":"Tank Top"
+
+    },
+
+    datasheet:""
+
+},
+
+
+/* ===================== MONITORING ===================== */
+
+{
+
+    id:10,
+
     category:"monitoring",
+
     categoryName:"Monitoring",
-    brand:"VEGA",
-    model:"LS-04",
-    name:"Fuel Level Switch",
-    icon:"📡",
-    price:850,
-    description:"Fuel tank level switch for high, low and pump control functions.",
+
+    brand:"PIUSI",
+
+    model:"OCIO",
+
+    name:"Tank Level Indicator",
+
+    visual:"monitor",
+
+    price:1786,
+
+    description:
+        "Continuous fuel tank level monitoring system providing clear indication of available diesel fuel.",
+
     specs:{
-        "Function":"Level Switching",
-        "Stages":"High / Low",
-        "Application":"Day Tank",
-        "Output":"Contact",
-        "Mounting":"Tank Top"
+
+        "Measurement":"Continuous Level",
+
+        "Application":"Fuel Tank",
+
+        "Display":"Digital",
+
+        "Monitoring":"Remote",
+
+        "Fluid":"Diesel"
+
     },
+
     datasheet:""
+
 },
 
+
 {
-    id:14,
-    category:"controls",
-    categoryName:"Control Panels",
-    brand:"VEGA",
-    model:"FCP-02",
-    name:"Duty Standby Pump Panel",
-    icon:"🖥️",
-    price:14950,
-    description:"Dedicated control panel for automatic duty and standby transfer pump operation.",
+
+    id:11,
+
+    category:"monitoring",
+
+    categoryName:"Monitoring",
+
+    brand:"PIUSI",
+
+    model:"K24",
+
+    name:"Digital Fuel Flow Meter",
+
+    visual:"monitor",
+
+    price:2450,
+
+    description:
+        "Digital fuel meter for monitoring diesel transfer quantities and fuel consumption.",
+
     specs:{
-        "Pumps":"2",
-        "Sequence":"Duty / Standby",
-        "Control":"Automatic",
-        "Alarm":"Pump Failure",
-        "Interface":"BMS"
+
+        "Type":"Digital Flow Meter",
+
+        "Fluid":"Diesel",
+
+        "Display":"Digital",
+
+        "Installation":"Inline",
+
+        "Application":"Fuel Transfer"
+
     },
+
     datasheet:""
+
+},
+
+
+/* ===================== CONTROL PANELS ===================== */
+
+{
+
+    id:12,
+
+    category:"controls",
+
+    categoryName:"Control Panels",
+
+    brand:"VEGA",
+
+    model:"FCP-01",
+
+    name:"Fuel System Control Panel",
+
+    visual:"control",
+
+    price:12500,
+
+    description:
+        "Automatic control panel for fuel transfer pumps, tank level control, alarm management and BMS interface.",
+
+    specs:{
+
+        "Control":"Automatic",
+
+        "Pump Logic":"Duty / Standby",
+
+        "Operation":"Manual / Auto",
+
+        "Interface":"BMS",
+
+        "Application":"Fuel Transfer"
+
+    },
+
+    datasheet:""
+
+},
+
+
+{
+
+    id:13,
+
+    category:"controls",
+
+    categoryName:"Control Panels",
+
+    brand:"VEGA",
+
+    model:"FCP-02",
+
+    name:"Duty Standby Pump Control Panel",
+
+    visual:"control",
+
+    price:14950,
+
+    description:
+        "Automatic duty and standby fuel transfer pump control panel with sequencing and failure alarms.",
+
+    specs:{
+
+        "Pump Quantity":"2",
+
+        "Sequence":"Duty / Standby",
+
+        "Control":"Automatic",
+
+        "Alarm":"Pump Failure",
+
+        "Interface":"BMS"
+
+    },
+
+    datasheet:""
+
 }
 
+
 ];
+
 
 
 /* =========================================================
    VARIABLES
 ========================================================= */
 
-let activeCategory = "all";
+let selectedCategory = "all";
 
 let activeProduct = null;
 
 
+
 /* =========================================================
-   PAGE NAVIGATION
+   GO HOME
 ========================================================= */
 
-function showHome(){
-
-    document
-    .getElementById("catalogPage")
-    .classList.add("hidden");
+function goHome(){
 
 
     document
-    .getElementById("homePage")
-    .classList.remove("hidden");
+    .getElementById(
+        "catalogPage"
+    )
+    .classList
+    .add(
+        "hidden"
+    );
 
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    document
+    .getElementById(
+        "homePage"
+    )
+    .classList
+    .remove(
+        "hidden"
+    );
+
+
+    window.scrollTo(
+        0,
+        0
+    );
 
 }
 
 
-function showCatalog(category="all"){
 
-    activeCategory = category;
+/* =========================================================
+   OPEN CATALOG
+========================================================= */
 
-
-    document
-    .getElementById("homePage")
-    .classList.add("hidden");
+function openCatalog(category){
 
 
-    document
-    .getElementById("catalogPage")
-    .classList.remove("hidden");
+    selectedCategory =
+        category || "all";
 
 
     document
-    .getElementById("categoryFilter")
-    .value = category;
+    .getElementById(
+        "homePage"
+    )
+    .classList
+    .add(
+        "hidden"
+    );
+
+
+    document
+    .getElementById(
+        "catalogPage"
+    )
+    .classList
+    .remove(
+        "hidden"
+    );
+
+
+    updateCategoryTabs();
 
 
     renderProducts();
 
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    window.scrollTo(
+        0,
+        0
+    );
 
 }
 
 
+
 /* =========================================================
-   PRODUCT RENDERING
+   SET CATEGORY
+========================================================= */
+
+function setCategory(
+    category,
+    button
+){
+
+
+    selectedCategory =
+        category;
+
+
+    document
+    .querySelectorAll(
+        ".category-tab"
+    )
+    .forEach(
+        btn =>
+        btn.classList.remove(
+            "active"
+        )
+    );
+
+
+    button
+    .classList
+    .add(
+        "active"
+    );
+
+
+    renderProducts();
+
+}
+
+
+
+/* =========================================================
+   UPDATE CATEGORY TABS
+========================================================= */
+
+function updateCategoryTabs(){
+
+
+    document
+    .querySelectorAll(
+        ".category-tab"
+    )
+    .forEach(
+        button=>{
+
+
+            if(
+                button.dataset.category
+                ===
+                selectedCategory
+            ){
+
+                button
+                .classList
+                .add(
+                    "active"
+                );
+
+            }
+
+            else{
+
+                button
+                .classList
+                .remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   CREATE PRODUCT VISUAL
+========================================================= */
+
+function productVisual(type){
+
+
+    if(
+        type === "tank"
+    ){
+
+        return `
+
+        <div class="visual visual-tank"></div>
+
+        `;
+
+    }
+
+
+    if(
+        type === "pump"
+    ){
+
+        return `
+
+        <div class="visual visual-pump"></div>
+
+        `;
+
+    }
+
+
+    if(
+        type === "filter"
+    ){
+
+        return `
+
+        <div class="visual visual-filter">
+
+            <span></span>
+
+            <span></span>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(
+        type === "valve"
+    ){
+
+        return `
+
+        <div class="visual visual-valve"></div>
+
+        `;
+
+    }
+
+
+    if(
+        type === "monitor"
+    ){
+
+        return `
+
+        <div class="visual visual-monitor">
+
+            <div class="monitor-screen">
+                78%
+            </div>
+
+            <div class="monitor-dots">
+
+                <i></i>
+
+                <i></i>
+
+                <i></i>
+
+            </div>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(
+        type === "control"
+    ){
+
+        return `
+
+        <div class="visual visual-control">
+
+            <div class="panel-screen"></div>
+
+            <div class="panel-lights">
+
+                <i></i>
+
+                <i></i>
+
+                <i></i>
+
+            </div>
+
+        </div>
+
+        `;
+
+    }
+
+
+    return "";
+
+}
+
+
+
+/* =========================================================
+   RENDER PRODUCTS
 ========================================================= */
 
 function renderProducts(){
 
+
     const grid =
-        document.getElementById(
+        document
+        .getElementById(
             "productGrid"
         );
 
 
-    const search =
-        document.getElementById(
+    const searchText =
+        document
+        .getElementById(
             "catalogSearch"
         )
         .value
@@ -3519,287 +3351,370 @@ function renderProducts(){
         .toLowerCase();
 
 
-    const category =
-        document.getElementById(
-            "categoryFilter"
-        )
-        .value;
-
-
     const brand =
-        document.getElementById(
+        document
+        .getElementById(
             "brandFilter"
         )
         .value;
 
 
     const sort =
-        document.getElementById(
+        document
+        .getElementById(
             "sortFilter"
         )
         .value;
 
 
+
     let filtered =
-        products.filter(product=>{
-
-            const searchable =
-
-                (
-                    product.name
-                    + " "
-                    + product.brand
-                    + " "
-                    + product.model
-                    + " "
-                    + product.description
-                    + " "
-                    + product.categoryName
-                )
-                .toLowerCase();
+        products.filter(
+            product=>{
 
 
-            const categoryMatch =
+                const categoryMatch =
 
-                category === "all"
+                    selectedCategory
+                    ===
+                    "all"
 
-                ||
+                    ||
 
-                product.category === category;
-
-
-            const brandMatch =
-
-                brand === "all"
-
-                ||
-
-                product.brand
-                .toLowerCase() === brand;
+                    product.category
+                    ===
+                    selectedCategory;
 
 
-            const searchMatch =
 
-                !search
+                const brandMatch =
 
-                ||
+                    brand
+                    ===
+                    "all"
 
-                searchable.includes(search);
+                    ||
 
-
-            return
-
-                categoryMatch
-
-                &&
-
-                brandMatch
-
-                &&
-
-                searchMatch;
-
-        });
+                    product.brand
+                    ===
+                    brand;
 
 
-    if(sort === "price-low"){
 
-        filtered.sort(
-            (a,b)=>a.price-b.price
+                const searchData =
+
+                    (
+
+                        product.name
+                        + " "
+                        + product.brand
+                        + " "
+                        + product.model
+                        + " "
+                        + product.description
+                        + " "
+                        + product.categoryName
+
+                    )
+                    .toLowerCase();
+
+
+
+                const searchMatch =
+
+                    searchText
+                    ===
+                    ""
+
+                    ||
+
+                    searchData.includes(
+                        searchText
+                    );
+
+
+
+                return
+
+                    categoryMatch
+                    &&
+                    brandMatch
+                    &&
+                    searchMatch;
+
+            }
         );
 
-    }
 
 
-    if(sort === "price-high"){
-
-        filtered.sort(
-            (a,b)=>b.price-a.price
-        );
-
-    }
-
-
-    if(sort === "name"){
+    if(
+        sort === "name"
+    ){
 
         filtered.sort(
             (a,b)=>
-                a.name.localeCompare(
-                    b.name
-                )
-        );
-
-    }
-
-
-    if(filtered.length === 0){
-
-        grid.innerHTML = `
-
-            <div class="no-results">
-
-                No products found.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML = filtered
-    .map(product=>{
-
-        const firstSpecs =
-            Object.entries(
-                product.specs
+            a.name.localeCompare(
+                b.name
             )
-            .slice(0,3);
-
-
-        return `
-
-        <article
-            class="product-card"
-            onclick="openProduct(${product.id})"
-        >
-
-
-            <div class="card-top">
-
-                <div class="category-label">
-                    ${product.categoryName}
-                </div>
-
-                <div class="brand-label">
-                    ${product.brand}
-                </div>
-
-                <div class="card-icon">
-                    ${product.icon}
-                </div>
-
-            </div>
-
-
-            <div class="card-content">
-
-
-                <div class="card-brand">
-                    ${product.brand}
-                </div>
-
-
-                <div class="card-title">
-                    ${product.name}
-                </div>
-
-
-                <div class="card-model">
-                    Model: ${product.model}
-                </div>
-
-
-                <div class="card-description">
-                    ${product.description}
-                </div>
-
-
-                <div class="spec-mini">
-
-                    ${
-
-                        firstSpecs
-                        .map(([key,value])=>`
-
-                            <div>
-
-                                <span>
-                                    ${key}
-                                </span>
-
-                                <strong>
-                                    ${value}
-                                </strong>
-
-                            </div>
-
-                        `)
-                        .join("")
-
-                    }
-
-                </div>
-
-
-                <div class="card-bottom">
-
-
-                    <div class="price">
-
-                        <small>
-                            PRICE
-                        </small>
-
-                        <strong>
-
-                            ${product.price.toLocaleString()}
-                            SAR
-
-                        </strong>
-
-                    </div>
-
-
-                    <button
-                        class="view-product"
-                    >
-                        DETAILS →
-                    </button>
-
-
-                </div>
-
-
-            </div>
-
-
-        </article>
-
-        `;
-
-    })
-    .join("");
-
-}
-
-
-/* =========================================================
-   PRODUCT DETAILS
-========================================================= */
-
-function openProduct(id){
-
-    activeProduct =
-        products.find(
-            product =>
-            product.id === id
         );
 
-
-    if(!activeProduct){
-        return;
     }
+
+
+
+    if(
+        sort === "priceLow"
+    ){
+
+        filtered.sort(
+            (a,b)=>
+            a.price-b.price
+        );
+
+    }
+
+
+
+    if(
+        sort === "priceHigh"
+    ){
+
+        filtered.sort(
+            (a,b)=>
+            b.price-a.price
+        );
+
+    }
+
 
 
     document
     .getElementById(
-        "modalImage"
+        "productCount"
+    )
+    .textContent =
+        filtered.length;
+
+
+
+    if(
+        filtered.length
+        ===
+        0
+    ){
+
+        grid.innerHTML = `
+
+        <div class="empty">
+
+            No products found.
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    grid.innerHTML =
+
+        filtered
+        .map(
+            product=>{
+
+
+                const quickSpecs =
+
+                    Object.entries(
+                        product.specs
+                    )
+                    .slice(
+                        0,
+                        3
+                    );
+
+
+                return `
+
+
+                <article
+                    class="product-card"
+                    onclick="openProduct(${product.id})"
+                >
+
+
+                    <div class="product-image">
+
+
+                        <div class="product-category">
+
+                            ${product.categoryName}
+
+                        </div>
+
+
+                        <div class="product-brand">
+
+                            ${product.brand}
+
+                        </div>
+
+
+                        ${productVisual(product.visual)}
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="brand-name">
+
+                            ${product.brand}
+
+                        </div>
+
+
+                        <h3>
+
+                            ${product.name}
+
+                        </h3>
+
+
+                        <div class="model">
+
+                            Model:
+                            ${product.model}
+
+                        </div>
+
+
+                        <p class="description">
+
+                            ${product.description}
+
+                        </p>
+
+
+
+                        <div class="quick-specs">
+
+
+                            ${
+
+                                quickSpecs
+                                .map(
+                                    ([key,value])=>`
+
+                                    <div class="quick-spec">
+
+                                        <span>
+                                            ${key}
+                                        </span>
+
+                                        <strong>
+                                            ${value}
+                                        </strong>
+
+                                    </div>
+
+                                    `
+                                )
+                                .join("")
+
+                            }
+
+
+                        </div>
+
+
+
+                        <div class="card-footer">
+
+
+                            <div class="price">
+
+                                <small>
+                                    SELLING PRICE
+                                </small>
+
+                                <strong>
+
+                                    ${product.price.toLocaleString()}
+                                    SAR
+
+                                </strong>
+
+                            </div>
+
+
+                            <button class="details-button">
+
+                                DETAILS →
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </article>
+
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+
+/* =========================================================
+   OPEN PRODUCT DETAILS
+========================================================= */
+
+function openProduct(id){
+
+
+    activeProduct =
+        products.find(
+            product =>
+            product.id
+            ===
+            id
+        );
+
+
+    if(
+        !activeProduct
+    ){
+
+        return;
+
+    }
+
+
+
+    document
+    .getElementById(
+        "modalVisual"
     )
     .innerHTML =
-        activeProduct.icon;
+        productVisual(
+            activeProduct.visual
+        );
+
 
 
     document
@@ -3810,6 +3725,7 @@ function openProduct(id){
         activeProduct.categoryName;
 
 
+
     document
     .getElementById(
         "modalTitle"
@@ -3818,14 +3734,19 @@ function openProduct(id){
         activeProduct.name;
 
 
+
     document
     .getElementById(
-        "modalBrand"
+        "modalModel"
     )
     .textContent =
+
         activeProduct.brand
-        + " · "
-        + activeProduct.model;
+        +
+        " · "
+        +
+        activeProduct.model;
+
 
 
     document
@@ -3834,6 +3755,7 @@ function openProduct(id){
     )
     .textContent =
         activeProduct.description;
+
 
 
     document
@@ -3846,36 +3768,44 @@ function openProduct(id){
         .price
         .toLocaleString()
 
-        + " SAR";
+        +
+
+        " SAR";
 
 
-    const table =
-        document.getElementById(
-            "detailTable"
-        );
 
-
-    table.innerHTML =
+    document
+    .getElementById(
+        "detailsTable"
+    )
+    .innerHTML =
 
         Object.entries(
             activeProduct.specs
         )
-        .map(([key,value])=>`
+        .map(
+            ([key,value])=>`
 
             <div class="detail-row">
 
                 <span>
+
                     ${key}
+
                 </span>
 
                 <strong>
+
                     ${value}
+
                 </strong>
 
             </div>
 
-        `)
+            `
+        )
         .join("");
+
 
 
     document
@@ -3883,9 +3813,12 @@ function openProduct(id){
         "productModal"
     )
     .classList
-    .remove("hidden");
+    .remove(
+        "hidden"
+    );
 
 }
+
 
 
 /* =========================================================
@@ -3894,14 +3827,18 @@ function openProduct(id){
 
 function closeProduct(){
 
+
     document
     .getElementById(
         "productModal"
     )
     .classList
-    .add("hidden");
+    .add(
+        "hidden"
+    );
 
 }
+
 
 
 /* =========================================================
@@ -3909,6 +3846,7 @@ function closeProduct(){
 ========================================================= */
 
 function openDatasheet(){
+
 
     if(
         activeProduct
@@ -3926,7 +3864,7 @@ function openDatasheet(){
     else{
 
         alert(
-            "Datasheet link will be added for this product."
+            "Datasheet will be added for this product."
         );
 
     }
@@ -3934,8 +3872,23 @@ function openDatasheet(){
 }
 
 
+
 /* =========================================================
-   FILTER EVENTS
+   QUOTATION
+========================================================= */
+
+function requestQuotation(){
+
+    alert(
+        "Quotation function can be connected later."
+    );
+
+}
+
+
+
+/* =========================================================
+   SEARCH / FILTER EVENTS
 ========================================================= */
 
 document
@@ -3948,15 +3901,6 @@ document
 );
 
 
-document
-.getElementById(
-    "categoryFilter"
-)
-.addEventListener(
-    "change",
-    renderProducts
-);
-
 
 document
 .getElementById(
@@ -3966,6 +3910,7 @@ document
     "change",
     renderProducts
 );
+
 
 
 document
@@ -3978,46 +3923,35 @@ document
 );
 
 
-/* =========================================================
-   HEADER SEARCH
-========================================================= */
+
+/* HEADER SEARCH */
 
 document
 .getElementById(
     "headerSearch"
 )
 .addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Enter"
-        ){
-
-            const value =
-                this.value.trim();
+    "input",
+    function(){
 
 
-            showCatalog("all");
+        document
+        .getElementById(
+            "catalogSearch"
+        )
+        .value =
+            this.value;
 
 
-            document
-            .getElementById(
-                "catalogSearch"
-            )
-            .value = value;
-
-
-            renderProducts();
-
-        }
+        renderProducts();
 
     }
 );
 
 
+
 /* =========================================================
-   CLOSE MODAL BY BACKGROUND
+   CLOSE MODAL WHEN CLICKING BACKGROUND
 ========================================================= */
 
 document
@@ -4028,8 +3962,11 @@ document
     "click",
     function(event){
 
+
         if(
-            event.target === this
+            event.target
+            ===
+            this
         ){
 
             closeProduct();
@@ -4040,17 +3977,19 @@ document
 );
 
 
-/* =========================================================
-   ESC KEY
-========================================================= */
+
+/* ESC */
 
 document
 .addEventListener(
     "keydown",
     function(event){
 
+
         if(
-            event.key === "Escape"
+            event.key
+            ===
+            "Escape"
         ){
 
             closeProduct();
@@ -4061,14 +4000,15 @@ document
 );
 
 
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
+
+/* INITIAL */
 
 renderProducts();
+
 
 </script>
 
 
 </body>
+
 </html>
